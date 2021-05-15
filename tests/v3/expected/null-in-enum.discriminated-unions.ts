@@ -8,7 +8,8 @@ export interface paths {
     get: {
       responses: {
         /** A list of types. */
-        200: unknown;
+        status: 200;
+        content: unknown;
       };
     };
   };

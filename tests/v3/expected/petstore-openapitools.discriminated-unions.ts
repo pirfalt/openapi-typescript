@@ -133,35 +133,47 @@ export interface components {
 
 export interface operations {
   updatePet: {
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Pet"];
-          "application/json": components["schemas"]["Pet"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Pet"];
+            "application/json": components["schemas"]["Pet"];
+          };
+        }
+      | {
+          /** Invalid ID supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** Pet not found */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          /** Validation exception */
+          status: 405;
+          content: unknown;
         };
-      };
-      /** Invalid ID supplied */
-      400: unknown;
-      /** Pet not found */
-      404: unknown;
-      /** Validation exception */
-      405: unknown;
-    };
     requestBody: components["requestBodies"]["Pet"];
   };
   addPet: {
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Pet"];
-          "application/json": components["schemas"]["Pet"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Pet"];
+            "application/json": components["schemas"]["Pet"];
+          };
+        }
+      | {
+          /** Invalid input */
+          status: 405;
+          content: unknown;
         };
-      };
-      /** Invalid input */
-      405: unknown;
-    };
     requestBody: components["requestBodies"]["Pet"];
   };
   /** Multiple status values can be provided with comma separated strings */
@@ -172,17 +184,20 @@ export interface operations {
         status: ("available" | "pending" | "sold")[];
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Pet"][];
-          "application/json": components["schemas"]["Pet"][];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Pet"][];
+            "application/json": components["schemas"]["Pet"][];
+          };
+        }
+      | {
+          /** Invalid status value */
+          status: 400;
+          content: unknown;
         };
-      };
-      /** Invalid status value */
-      400: unknown;
-    };
   };
   /** Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing. */
   findPetsByTags: {
@@ -192,17 +207,20 @@ export interface operations {
         tags: string[];
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Pet"][];
-          "application/json": components["schemas"]["Pet"][];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Pet"][];
+            "application/json": components["schemas"]["Pet"][];
+          };
+        }
+      | {
+          /** Invalid tag value */
+          status: 400;
+          content: unknown;
         };
-      };
-      /** Invalid tag value */
-      400: unknown;
-    };
   };
   /** Returns a single pet */
   getPetById: {
@@ -212,19 +230,25 @@ export interface operations {
         petId: number;
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Pet"];
-          "application/json": components["schemas"]["Pet"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Pet"];
+            "application/json": components["schemas"]["Pet"];
+          };
+        }
+      | {
+          /** Invalid ID supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** Pet not found */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Invalid ID supplied */
-      400: unknown;
-      /** Pet not found */
-      404: unknown;
-    };
   };
   updatePetWithForm: {
     parameters: {
@@ -235,7 +259,8 @@ export interface operations {
     };
     responses: {
       /** Invalid input */
-      405: unknown;
+      status: 405;
+      content: unknown;
     };
     requestBody: {
       content: {
@@ -260,7 +285,8 @@ export interface operations {
     };
     responses: {
       /** Invalid pet value */
-      400: unknown;
+      status: 400;
+      content: unknown;
     };
   };
   uploadFile: {
@@ -272,10 +298,9 @@ export interface operations {
     };
     responses: {
       /** successful operation */
-      200: {
-        content: {
-          "application/json": components["schemas"]["ApiResponse"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["ApiResponse"];
       };
     };
     requestBody: {
@@ -293,25 +318,27 @@ export interface operations {
   getInventory: {
     responses: {
       /** successful operation */
-      200: {
-        content: {
-          "application/json": { [key: string]: number };
-        };
+      status: 200;
+      content: {
+        "application/json": { [key: string]: number };
       };
     };
   };
   placeOrder: {
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Order"];
-          "application/json": components["schemas"]["Order"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Order"];
+            "application/json": components["schemas"]["Order"];
+          };
+        }
+      | {
+          /** Invalid Order */
+          status: 400;
+          content: unknown;
         };
-      };
-      /** Invalid Order */
-      400: unknown;
-    };
     /** order placed for purchasing the pet */
     requestBody: {
       content: {
@@ -327,19 +354,25 @@ export interface operations {
         orderId: number;
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["Order"];
-          "application/json": components["schemas"]["Order"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["Order"];
+            "application/json": components["schemas"]["Order"];
+          };
+        }
+      | {
+          /** Invalid ID supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** Order not found */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Invalid ID supplied */
-      400: unknown;
-      /** Order not found */
-      404: unknown;
-    };
   };
   /** For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors */
   deleteOrder: {
@@ -349,18 +382,24 @@ export interface operations {
         orderId: string;
       };
     };
-    responses: {
-      /** Invalid ID supplied */
-      400: unknown;
-      /** Order not found */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Invalid ID supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** Order not found */
+          status: 404;
+          content: unknown;
+        };
   };
   /** This can only be done by the logged in user. */
   createUser: {
     responses: {
       /** successful operation */
-      default: unknown;
+      status: "default";
+      content: unknown;
     };
     /** Created user object */
     requestBody: {
@@ -372,14 +411,16 @@ export interface operations {
   createUsersWithArrayInput: {
     responses: {
       /** successful operation */
-      default: unknown;
+      status: "default";
+      content: unknown;
     };
     requestBody: components["requestBodies"]["UserArray"];
   };
   createUsersWithListInput: {
     responses: {
       /** successful operation */
-      default: unknown;
+      status: "default";
+      content: unknown;
     };
     requestBody: components["requestBodies"]["UserArray"];
   };
@@ -392,30 +433,34 @@ export interface operations {
         password: string;
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        headers: {
-          /** Cookie authentication key for use with the `api_key` apiKey authentication. */
-          "Set-Cookie"?: string;
-          /** calls per hour allowed by the user */
-          "X-Rate-Limit"?: number;
-          /** date in UTC when toekn expires */
-          "X-Expires-After"?: string;
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          headers: {
+            /** Cookie authentication key for use with the `api_key` apiKey authentication. */
+            "Set-Cookie"?: string;
+            /** calls per hour allowed by the user */
+            "X-Rate-Limit"?: number;
+            /** date in UTC when toekn expires */
+            "X-Expires-After"?: string;
+          };
+          content: {
+            "application/xml": string;
+            "application/json": string;
+          };
+        }
+      | {
+          /** Invalid username/password supplied */
+          status: 400;
+          content: unknown;
         };
-        content: {
-          "application/xml": string;
-          "application/json": string;
-        };
-      };
-      /** Invalid username/password supplied */
-      400: unknown;
-    };
   };
   logoutUser: {
     responses: {
       /** successful operation */
-      default: unknown;
+      status: "default";
+      content: unknown;
     };
   };
   getUserByName: {
@@ -425,19 +470,25 @@ export interface operations {
         username: string;
       };
     };
-    responses: {
-      /** successful operation */
-      200: {
-        content: {
-          "application/xml": components["schemas"]["User"];
-          "application/json": components["schemas"]["User"];
+    responses:
+      | {
+          /** successful operation */
+          status: 200;
+          content: {
+            "application/xml": components["schemas"]["User"];
+            "application/json": components["schemas"]["User"];
+          };
+        }
+      | {
+          /** Invalid username supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** User not found */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Invalid username supplied */
-      400: unknown;
-      /** User not found */
-      404: unknown;
-    };
   };
   /** This can only be done by the logged in user. */
   updateUser: {
@@ -447,12 +498,17 @@ export interface operations {
         username: string;
       };
     };
-    responses: {
-      /** Invalid user supplied */
-      400: unknown;
-      /** User not found */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Invalid user supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** User not found */
+          status: 404;
+          content: unknown;
+        };
     /** Updated user object */
     requestBody: {
       content: {
@@ -468,11 +524,16 @@ export interface operations {
         username: string;
       };
     };
-    responses: {
-      /** Invalid username supplied */
-      400: unknown;
-      /** User not found */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Invalid username supplied */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          /** User not found */
+          status: 404;
+          content: unknown;
+        };
   };
 }

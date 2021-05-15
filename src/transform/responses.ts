@@ -15,6 +15,7 @@ interface Options {
 export function transformResponsesObj(responsesObj: Record<string, any>, options: Options): string {
   const { immutableTypes, discriminatedUnions } = options;
   const readonly = tsReadonly(immutableTypes);
+  const discriminatedDelimiter = "  } | {\n  ";
 
   let output = "";
 
@@ -25,7 +26,9 @@ export function transformResponsesObj(responsesObj: Record<string, any>, options
 
     if (response.$ref) {
       if (discriminatedUnions) {
-        output += `  status: ${readonly}${statusCode};\n  content: ${transformRef(response.$ref)};\n`; // reference
+        output += `  status: ${readonly}${statusCode};\n`;
+        output += `  content: ${transformRef(response.$ref)};\n`; // reference
+        output += discriminatedDelimiter;
       } else {
         output += `  ${readonly}${statusCode}: ${transformRef(response.$ref)};\n`; // reference
       }
@@ -34,7 +37,9 @@ export function transformResponsesObj(responsesObj: Record<string, any>, options
 
     if ((!response.content && !response.schema) || (response.content && !Object.keys(response.content).length)) {
       if (discriminatedUnions) {
-        output += `  status: ${readonly}${statusCode};\n  content: ${resType(statusCode)};\n`; // unknown / missing response
+        output += `  status: ${readonly}${statusCode};\n`;
+        output += `  content: ${resType(statusCode)};\n`; // unknown / missing response
+        output += discriminatedDelimiter;
       } else {
         output += `  ${readonly}${statusCode}: ${resType(statusCode)};\n`; // unknown / missing response
       }
@@ -74,15 +79,14 @@ export function transformResponsesObj(responsesObj: Record<string, any>, options
     }
 
     if (discriminatedUnions) {
-      output += `  } | {\n  `; // close response
+      output += discriminatedDelimiter; // close response
     } else {
       output += `  }\n`; // close response
     }
   });
 
-  const trailer = "  } | {\n  ";
-  if (output.endsWith(trailer)) {
-    output = output.substring(0, output.lastIndexOf(trailer));
+  if (output.endsWith(discriminatedDelimiter)) {
+    output = output.substring(0, output.lastIndexOf(discriminatedDelimiter));
   }
   return output;
 }

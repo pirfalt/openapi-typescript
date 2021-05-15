@@ -30,6 +30,20 @@ describe("cli", () => {
       const generated = readFileSync(join(__dirname, "generated", output), "utf8");
       expect(generated).toBe(expected);
     });
+
+    it(`reads ${schema} spec (v3) from file (discriminated-unions types)`, () => {
+      const output = schema.replace(".yaml", ".discriminated-unions.ts");
+
+      execSync(
+        `../../bin/cli.js specs/${schema} -o generated/${output} --prettier-config .prettierrc --discriminated-unions`,
+        {
+          cwd: __dirname,
+        }
+      );
+      const expected = readFileSync(join(__dirname, "expected", output), "utf8");
+      const generated = readFileSync(join(__dirname, "generated", output), "utf8");
+      expect(generated).toBe(expected);
+    });
   });
 
   it("reads spec (v3) from remote resource", () => {

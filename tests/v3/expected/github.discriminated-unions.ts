@@ -9917,149 +9917,176 @@ export interface components {
       key: string;
     };
   };
-  responses: {
-    /** Resource Not Found */
-    not_found: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Validation Failed */
-    validation_failed_simple: {
-      content: {
-        "application/json": components["schemas"]["validation-error-simple"];
-      };
-    };
-    /** Preview Header Missing */
-    preview_header_missing: {
-      content: {
-        "application/json": {
-          message: string;
-          documentation_url: string;
+  responses:
+    | {
+        /** Resource Not Found */
+        status: "not_found";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
         };
-      };
-    };
-    /** Forbidden */
-    forbidden: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Requires Authentication */
-    requires_authentication: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Validation Failed */
-    validation_failed: {
-      content: {
-        "application/json": components["schemas"]["validation-error"];
-      };
-    };
-    /** Not Modified */
-    not_modified: unknown;
-    /** Gone */
-    gone: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Service Unavailable */
-    service_unavailable: {
-      content: {
-        "application/json": {
-          code?: string;
-          message?: string;
-          documentation_url?: string;
+      }
+    | {
+        /** Validation Failed */
+        status: "validation_failed_simple";
+        content: {
+          "application/json": components["schemas"]["validation-error-simple"];
         };
-      };
-    };
-    /** Forbidden Gist */
-    forbidden_gist: {
-      content: {
-        "application/json": {
-          block?: {
-            reason?: string;
-            created_at?: string;
-            html_url?: string | null;
+      }
+    | {
+        /** Preview Header Missing */
+        status: "preview_header_missing";
+        content: {
+          "application/json": {
+            message: string;
+            documentation_url: string;
           };
-          message?: string;
-          documentation_url?: string;
+        };
+      }
+    | {
+        /** Forbidden */
+        status: "forbidden";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Requires Authentication */
+        status: "requires_authentication";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Validation Failed */
+        status: "validation_failed";
+        content: {
+          "application/json": components["schemas"]["validation-error"];
+        };
+      }
+    | {
+        /** Not Modified */
+        status: "not_modified";
+        content: unknown;
+      }
+    | {
+        /** Gone */
+        status: "gone";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Service Unavailable */
+        status: "service_unavailable";
+        content: {
+          "application/json": {
+            code?: string;
+            message?: string;
+            documentation_url?: string;
+          };
+        };
+      }
+    | {
+        /** Forbidden Gist */
+        status: "forbidden_gist";
+        content: {
+          "application/json": {
+            block?: {
+              reason?: string;
+              created_at?: string;
+              html_url?: string | null;
+            };
+            message?: string;
+            documentation_url?: string;
+          };
+        };
+      }
+    | {
+        /** Moved Permanently */
+        status: "moved_permanently";
+        content: unknown;
+      }
+    | {
+        /** Conflict */
+        status: "conflict";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Response if github advanced security is not enabled for this repository */
+        status: "code_scanning_forbidden_read";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Response if the repository is archived or if github advanced security is not enabled for this repository */
+        status: "code_scanning_forbidden_write";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Bad Request */
+        status: "bad_request";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
+        };
+      }
+    | {
+        /** Internal Error */
+        status: "internal_error";
+        content: {
+          "application/json": components["schemas"]["basic-error"];
+        };
+      }
+    | {
+        /** Found */
+        status: "found";
+        content: unknown;
+      }
+    | {
+        /** Resource Not Found */
+        status: "scim_not_found";
+        content: {
+          "application/json": components["schemas"]["scim-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
+        };
+      }
+    | {
+        /** Forbidden */
+        status: "scim_forbidden";
+        content: {
+          "application/json": components["schemas"]["scim-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
+        };
+      }
+    | {
+        /** Bad Request */
+        status: "scim_bad_request";
+        content: {
+          "application/json": components["schemas"]["scim-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
+        };
+      }
+    | {
+        /** Internal Error */
+        status: "scim_internal_error";
+        content: {
+          "application/json": components["schemas"]["scim-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
+        };
+      }
+    | {
+        /** Conflict */
+        status: "scim_conflict";
+        content: {
+          "application/json": components["schemas"]["scim-error"];
+          "application/scim+json": components["schemas"]["scim-error"];
         };
       };
-    };
-    /** Moved Permanently */
-    moved_permanently: unknown;
-    /** Conflict */
-    conflict: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Response if github advanced security is not enabled for this repository */
-    code_scanning_forbidden_read: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Response if the repository is archived or if github advanced security is not enabled for this repository */
-    code_scanning_forbidden_write: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Bad Request */
-    bad_request: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-    /** Internal Error */
-    internal_error: {
-      content: {
-        "application/json": components["schemas"]["basic-error"];
-      };
-    };
-    /** Found */
-    found: unknown;
-    /** Resource Not Found */
-    scim_not_found: {
-      content: {
-        "application/json": components["schemas"]["scim-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-    /** Forbidden */
-    scim_forbidden: {
-      content: {
-        "application/json": components["schemas"]["scim-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-    /** Bad Request */
-    scim_bad_request: {
-      content: {
-        "application/json": components["schemas"]["scim-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-    /** Internal Error */
-    scim_internal_error: {
-      content: {
-        "application/json": components["schemas"]["scim-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-    /** Conflict */
-    scim_conflict: {
-      content: {
-        "application/json": components["schemas"]["scim-error"];
-        "application/scim+json": components["schemas"]["scim-error"];
-      };
-    };
-  };
   parameters: {
     /** Results per page (max 100). */
     per_page: number;
@@ -10263,43 +10290,42 @@ export interface operations {
   "meta/root": {
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            current_user_url: string;
-            current_user_authorizations_html_url: string;
-            authorizations_url: string;
-            code_search_url: string;
-            commit_search_url: string;
-            emails_url: string;
-            emojis_url: string;
-            events_url: string;
-            feeds_url: string;
-            followers_url: string;
-            following_url: string;
-            gists_url: string;
-            hub_url: string;
-            issue_search_url: string;
-            issues_url: string;
-            keys_url: string;
-            label_search_url: string;
-            notifications_url: string;
-            organization_url: string;
-            organization_repositories_url: string;
-            organization_teams_url: string;
-            public_gists_url: string;
-            rate_limit_url: string;
-            repository_url: string;
-            repository_search_url: string;
-            current_user_repositories_url: string;
-            starred_url: string;
-            starred_gists_url: string;
-            topic_search_url?: string;
-            user_url: string;
-            user_organizations_url: string;
-            user_repositories_url: string;
-            user_search_url: string;
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          current_user_url: string;
+          current_user_authorizations_html_url: string;
+          authorizations_url: string;
+          code_search_url: string;
+          commit_search_url: string;
+          emails_url: string;
+          emojis_url: string;
+          events_url: string;
+          feeds_url: string;
+          followers_url: string;
+          following_url: string;
+          gists_url: string;
+          hub_url: string;
+          issue_search_url: string;
+          issues_url: string;
+          keys_url: string;
+          label_search_url: string;
+          notifications_url: string;
+          organization_url: string;
+          organization_repositories_url: string;
+          organization_teams_url: string;
+          public_gists_url: string;
+          rate_limit_url: string;
+          repository_url: string;
+          repository_search_url: string;
+          current_user_repositories_url: string;
+          starred_url: string;
+          starred_gists_url: string;
+          topic_search_url?: string;
+          user_url: string;
+          user_organizations_url: string;
+          user_repositories_url: string;
+          user_search_url: string;
         };
       };
     };
@@ -10313,10 +10339,9 @@ export interface operations {
     parameters: {};
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["integration"];
       };
     };
   };
@@ -10327,22 +10352,28 @@ export interface operations {
         code: string;
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["integration"] &
-            ({
-              client_id: string;
-              client_secret: string;
-              webhook_secret: string;
-              pem: string;
-            } & { [key: string]: any });
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["integration"] &
+              ({
+                client_id: string;
+                client_secret: string;
+                webhook_secret: string;
+                pem: string;
+              } & { [key: string]: any });
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
   };
   /**
    * Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
@@ -10352,10 +10383,9 @@ export interface operations {
   "apps/get-webhook-config-for-app": {
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
   };
@@ -10367,10 +10397,9 @@ export interface operations {
   "apps/update-webhook-config-for-app": {
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
     requestBody: {
@@ -10403,11 +10432,10 @@ export interface operations {
     };
     responses: {
       /** The permissions the installation has are included under the `permissions` key. */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["installation"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["installation"][];
       };
     };
   };
@@ -10423,16 +10451,22 @@ export interface operations {
         installation_id: components["parameters"]["installation_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["installation"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["installation"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/rest/reference/apps/#suspend-an-app-installation)" endpoint.
@@ -10446,11 +10480,16 @@ export interface operations {
         installation_id: components["parameters"]["installation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access. To restrict the access to specific repositories, you can provide the `repository_ids` when creating the token. When you omit `repository_ids`, the response does not contain the `repositories` key.
@@ -10464,19 +10503,34 @@ export interface operations {
         installation_id: components["parameters"]["installation_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["installation-token"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["installation-token"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10501,11 +10555,16 @@ export interface operations {
         installation_id: components["parameters"]["installation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Removes a GitHub App installation suspension.
@@ -10519,11 +10578,16 @@ export interface operations {
         installation_id: components["parameters"]["installation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
@@ -10539,19 +10603,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["application-grant"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["application-grant"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/). */
   "oauth-authorizations/get-grant": {
@@ -10561,17 +10637,26 @@ export interface operations {
         grant_id: components["parameters"]["grant_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["application-grant"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["application-grant"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
@@ -10585,13 +10670,24 @@ export interface operations {
         grant_id: components["parameters"]["grant_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /**
    * OAuth application owners can revoke a grant for their OAuth application and a specific user. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
@@ -10604,11 +10700,16 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -10635,7 +10736,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`. */
@@ -10646,16 +10748,22 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10673,11 +10781,16 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -10695,15 +10808,18 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10721,18 +10837,30 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10764,15 +10892,18 @@ export interface operations {
         access_token: components["parameters"]["access-token"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"] | null;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"] | null;
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** GitHub will discontinue OAuth endpoints that contain `access_token` in the path parameter. We have introduced new endpoints that allow you to securely manage tokens for OAuth Apps by moving `access_token` to the request body. For more information, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-app-endpoint/).
@@ -10789,10 +10920,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["authorization"];
       };
     };
   };
@@ -10811,7 +10941,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -10825,17 +10956,26 @@ export interface operations {
         app_slug: components["parameters"]["app_slug"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["integration"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/). */
   "oauth-authorizations/list-authorizations": {
@@ -10847,19 +10987,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["authorization"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["authorization"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
@@ -10876,22 +11028,37 @@ export interface operations {
    */
   "oauth-authorizations/create-authorization": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10929,30 +11096,43 @@ export interface operations {
         client_id: components["parameters"]["client-id"];
       };
     };
-    responses: {
-      /** Response if returning an existing token */
-      200: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** Response if returning an existing token */
+          status: 200;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          /** **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/). */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
-      };
-      /** **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/). */
-      201: {
-        headers: {
-          Location?: string;
-        };
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -10987,27 +11167,31 @@ export interface operations {
         fingerprint: string;
       };
     };
-    responses: {
-      /** Response if returning an existing token */
-      200: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** Response if returning an existing token */
+          status: 200;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          /** Response if returning a new token */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
-      };
-      /** Response if returning a new token */
-      201: {
-        headers: {
-          Location?: string;
-        };
-        content: {
-          "application/json": components["schemas"]["authorization"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -11031,17 +11215,26 @@ export interface operations {
         authorization_id: components["parameters"]["authorization_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/). */
   "oauth-authorizations/delete-authorization": {
@@ -11051,13 +11244,24 @@ export interface operations {
         authorization_id: components["parameters"]["authorization_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /**
    * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
@@ -11073,15 +11277,18 @@ export interface operations {
         authorization_id: components["parameters"]["authorization_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["authorization"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["authorization"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -11103,16 +11310,22 @@ export interface operations {
   };
   "codes-of-conduct/get-all-codes-of-conduct": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-of-conduct"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-of-conduct"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "codes-of-conduct/get-conduct-code": {
     parameters: {
@@ -11120,17 +11333,26 @@ export interface operations {
         key: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-of-conduct"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-of-conduct"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * Creates an attachment under a content reference URL in the body or comment of an issue or pull request. Use the `id` of the content reference from the [`content_reference` event](https://docs.github.com/webhooks/event-payloads/#content_reference) to create an attachment.
@@ -11145,20 +11367,38 @@ export interface operations {
         content_reference_id: number;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["content-reference-attachment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["content-reference-attachment"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -11173,15 +11413,18 @@ export interface operations {
   /** Lists all the emojis available to use on GitHub. */
   "emojis/get": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": { [key: string]: string };
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": { [key: string]: string };
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   /**
    * Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
@@ -11197,10 +11440,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-enterprise-permissions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-enterprise-permissions"];
       };
     };
   };
@@ -11218,7 +11460,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -11249,12 +11492,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            organizations: components["schemas"]["organization-simple"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          organizations: components["schemas"]["organization-simple"][];
         };
       };
     };
@@ -11273,7 +11515,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -11300,7 +11543,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11319,7 +11563,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11336,10 +11581,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["selected-actions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["selected-actions"];
       };
     };
   };
@@ -11357,7 +11601,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -11385,12 +11630,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            runner_groups: components["schemas"]["runner-groups-enterprise"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          runner_groups: components["schemas"]["runner-groups-enterprise"][];
         };
       };
     };
@@ -11409,10 +11653,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-enterprise"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["runner-groups-enterprise"];
       };
     };
     requestBody: {
@@ -11446,10 +11689,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-enterprise"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-groups-enterprise"];
       };
     };
   };
@@ -11469,7 +11711,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11488,10 +11731,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-enterprise"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-groups-enterprise"];
       };
     };
     requestBody: {
@@ -11527,12 +11769,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            organizations: components["schemas"]["organization-simple"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          organizations: components["schemas"]["organization-simple"][];
         };
       };
     };
@@ -11553,7 +11794,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -11582,7 +11824,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11603,7 +11846,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11628,13 +11872,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            runners: components["schemas"]["runner"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          runners: components["schemas"]["runner"][];
         };
       };
     };
@@ -11655,7 +11898,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -11685,7 +11929,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11706,7 +11951,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11729,13 +11975,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count?: number;
-            runners?: components["schemas"]["runner"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count?: number;
+          runners?: components["schemas"]["runner"][];
         };
       };
     };
@@ -11754,10 +11999,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-application"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-application"][];
       };
     };
   };
@@ -11783,10 +12027,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -11813,10 +12056,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -11836,10 +12078,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner"];
       };
     };
   };
@@ -11859,7 +12100,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -11902,10 +12144,9 @@ export interface operations {
     };
     responses: {
       /** Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["audit-log-event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["audit-log-event"][];
       };
     };
   };
@@ -11925,10 +12166,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-billing-usage"];
       };
     };
   };
@@ -11948,10 +12188,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["packages-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["packages-billing-usage"];
       };
     };
   };
@@ -11971,10 +12210,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["combined-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["combined-billing-usage"];
       };
     };
   };
@@ -11988,17 +12226,26 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["event"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard)) format. The Feeds API lists all the feeds available to the authenticated user:
@@ -12017,10 +12264,9 @@ export interface operations {
     parameters: {};
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["feed"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["feed"];
       };
     };
   };
@@ -12036,17 +12282,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["base-gist"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["base-gist"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * Allows you to add a new gist with one or more files.
@@ -12055,21 +12307,33 @@ export interface operations {
    */
   "gists/create": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["gist-simple"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["gist-simple"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -12103,18 +12367,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["base-gist"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["base-gist"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** List the authenticated user's starred gists: */
   "gists/list-starred": {
@@ -12128,18 +12401,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["base-gist"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["base-gist"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   "gists/get": {
     parameters: {
@@ -12148,17 +12430,26 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gist-simple"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gist-simple"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden_gist"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden_gist"];
-      404: components["responses"]["not_found"];
-    };
   };
   "gists/delete": {
     parameters: {
@@ -12167,13 +12458,24 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged. */
   "gists/update": {
@@ -12183,16 +12485,22 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gist-simple"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gist-simple"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json":
@@ -12223,18 +12531,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["gist-comment"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["gist-comment"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "gists/create-comment": {
     parameters: {
@@ -12243,20 +12560,29 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["gist-comment"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-        content: {
-          "application/json": components["schemas"]["gist-comment"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -12275,17 +12601,26 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gist-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gist-comment"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden_gist"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden_gist"];
-      404: components["responses"]["not_found"];
-    };
   };
   "gists/delete-comment": {
     parameters: {
@@ -12296,13 +12631,24 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "gists/update-comment": {
     parameters: {
@@ -12313,15 +12659,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gist-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gist-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -12344,20 +12693,29 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {
-          Link?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {
+            Link?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["gist-commit"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-        content: {
-          "application/json": components["schemas"]["gist-commit"][];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "gists/list-forks": {
     parameters: {
@@ -12372,18 +12730,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["gist-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["gist-simple"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** **Note**: This was previously `/gists/:gist_id/fork`. */
   "gists/fork": {
@@ -12393,21 +12760,33 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["base-gist"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["base-gist"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "gists/check-is-starred": {
     parameters: {
@@ -12416,18 +12795,27 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** Response if gist is starred */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      /** Response if gist is not starred */
-      404: {
-        content: {
-          "application/json": { [key: string]: any };
+    responses:
+      | {
+          /** Response if gist is starred */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if gist is not starred */
+          status: 404;
+          content: {
+            "application/json": { [key: string]: any };
+          };
         };
-      };
-    };
   };
   /** Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)." */
   "gists/star": {
@@ -12437,13 +12825,24 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "gists/unstar": {
     parameters: {
@@ -12452,13 +12851,24 @@ export interface operations {
         gist_id: components["parameters"]["gist_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "gists/get-revision": {
     parameters: {
@@ -12468,30 +12878,42 @@ export interface operations {
         sha: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gist-simple"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gist-simple"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user). */
   "gitignore/get-all-templates": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": string[];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   /**
    * The API also allows fetching the source of a single template.
@@ -12503,15 +12925,18 @@ export interface operations {
         name: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gitignore-template"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gitignore-template"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   /**
    * List repositories that an app installation can access.
@@ -12527,22 +12952,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            repositories: components["schemas"]["repository"][];
-            repository_selection?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": {
+              total_count: number;
+              repositories: components["schemas"]["repository"][];
+              repository_selection?: string;
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * Revokes the installation token you're using to authenticate as an installation and access this endpoint.
@@ -12555,7 +12989,8 @@ export interface operations {
     parameters: {};
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -12601,18 +13036,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "licenses/get-all-commonly-used": {
     parameters: {
@@ -12622,15 +13066,18 @@ export interface operations {
         per_page?: components["parameters"]["per_page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["license-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["license-simple"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   "licenses/get": {
     parameters: {
@@ -12638,32 +13085,44 @@ export interface operations {
         license: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["license"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["license"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "markdown/render": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        headers: {
-          "Content-Length"?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {
+            "Content-Length"?: string;
+          };
+          content: {
+            "text/html": string;
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-        content: {
-          "text/html": string;
-        };
-      };
-      304: components["responses"]["not_modified"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -12680,16 +13139,19 @@ export interface operations {
   /** You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less. */
   "markdown/render-raw": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "text/html": string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "text/html": string;
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
     requestBody: {
       content: {
         "text/plain": string;
@@ -12709,21 +13171,25 @@ export interface operations {
         account_id: components["parameters"]["account_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["marketplace-purchase"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["marketplace-purchase"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Response when the account has not purchased the listing */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      /** Response when the account has not purchased the listing */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
-        };
-      };
-    };
   };
   /**
    * Lists all plans that are part of your GitHub Marketplace listing.
@@ -12739,17 +13205,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["marketplace-listing-plan"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["marketplace-listing-plan"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
@@ -12773,18 +13245,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["marketplace-purchase"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["marketplace-purchase"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
@@ -12798,17 +13279,23 @@ export interface operations {
         account_id: components["parameters"]["account_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["marketplace-purchase"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["marketplace-purchase"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Response when the account has not purchased the listing */
+          status: 404;
+          content: unknown;
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      /** Response when the account has not purchased the listing */
-      404: unknown;
-    };
   };
   /**
    * Lists all plans that are part of your GitHub Marketplace listing.
@@ -12824,16 +13311,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["marketplace-listing-plan"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["marketplace-listing-plan"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-    };
   };
   /**
    * Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
@@ -12857,16 +13347,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["marketplace-purchase"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["marketplace-purchase"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-    };
   };
   /**
    * Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://help.github.com/articles/about-github-s-ip-addresses/)."
@@ -12875,15 +13368,18 @@ export interface operations {
    */
   "meta/get": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["api-overview"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["api-overview"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   "activity/list-public-events-for-repo-network": {
     parameters: {
@@ -12898,18 +13394,30 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["event"][];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** List all notifications for the current user, sorted by most recently updated. */
   "activity/list-notifications-for-authenticated-user": {
@@ -12929,38 +13437,62 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["thread"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["thread"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Marks all notifications as "read" removes it from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/rest/reference/activity#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`. */
   "activity/mark-notifications-as-read": {
     parameters: {};
-    responses: {
-      /** response */
-      202: {
-        content: {
-          "application/json": {
-            message?: string;
+    responses:
+      | {
+          /** response */
+          status: 202;
+          content: {
+            "application/json": {
+              message?: string;
+            };
           };
+        }
+      | {
+          /** response */
+          status: 205;
+          content: unknown;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      /** response */
-      205: unknown;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -12979,17 +13511,26 @@ export interface operations {
         thread_id: components["parameters"]["thread_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["thread"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["thread"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   "activity/mark-thread-as-read": {
     parameters: {
@@ -12998,12 +13539,20 @@ export interface operations {
         thread_id: components["parameters"]["thread_id"];
       };
     };
-    responses: {
-      /** response */
-      205: unknown;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** response */
+          status: 205;
+          content: unknown;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /**
    * This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).
@@ -13017,17 +13566,26 @@ export interface operations {
         thread_id: components["parameters"]["thread_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["thread-subscription"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["thread-subscription"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * If you are watching a repository, you receive notifications for all threads by default. Use this endpoint to ignore future notifications for threads until you comment on the thread or get an **@mention**.
@@ -13043,17 +13601,26 @@ export interface operations {
         thread_id: components["parameters"]["thread_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["thread-subscription"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["thread-subscription"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -13071,13 +13638,24 @@ export interface operations {
         thread_id: components["parameters"]["thread_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /** Get the octocat as ASCII art */
   "meta/get-octocat": {
@@ -13089,10 +13667,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/octocat-stream": string;
-        };
+      status: 200;
+      content: {
+        "application/octocat-stream": string;
       };
     };
   };
@@ -13110,18 +13687,21 @@ export interface operations {
         per_page?: components["parameters"]["per_page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {
-          Link?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {
+            Link?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["organization-simple"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-        content: {
-          "application/json": components["schemas"]["organization-simple"][];
-        };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   /**
    * To see many of the organization response values, you need to be an authenticated organization owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, and outside collaborators to enable [two-factor authentication](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/).
@@ -13134,15 +13714,18 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["organization-full"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["organization-full"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Parameter Deprecation Notice:** GitHub will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes).
@@ -13155,24 +13738,31 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["organization-full"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["organization-full"];
+          };
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          /** Validation Failed */
+          status: 422;
+          content: {
+            "application/json":
+              | components["schemas"]["validation-error"]
+              | components["schemas"]["validation-error-simple"];
+          };
         };
-      };
-      409: components["responses"]["conflict"];
-      415: components["responses"]["preview_header_missing"];
-      /** Validation Failed */
-      422: {
-        content: {
-          "application/json":
-            | components["schemas"]["validation-error"]
-            | components["schemas"]["validation-error-simple"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -13275,10 +13865,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-organization-permissions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-organization-permissions"];
       };
     };
   };
@@ -13297,7 +13886,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -13327,12 +13917,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            repositories: components["schemas"]["repository"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          repositories: components["schemas"]["repository"][];
         };
       };
     };
@@ -13350,7 +13939,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -13375,7 +13965,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13392,7 +13983,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13408,10 +14000,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["selected-actions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["selected-actions"];
       };
     };
   };
@@ -13432,7 +14023,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -13461,12 +14053,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            runner_groups: components["schemas"]["runner-groups-org"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          runner_groups: components["schemas"]["runner-groups-org"][];
         };
       };
     };
@@ -13486,10 +14077,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-org"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["runner-groups-org"];
       };
     };
     requestBody: {
@@ -13524,10 +14114,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-org"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-groups-org"];
       };
     };
   };
@@ -13548,7 +14137,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13568,10 +14158,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-groups-org"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-groups-org"];
       };
     };
     requestBody: {
@@ -13602,12 +14191,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            repositories: components["schemas"]["repository"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          repositories: components["schemas"]["repository"][];
         };
       };
     };
@@ -13629,7 +14217,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -13660,7 +14249,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13682,7 +14272,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13708,13 +14299,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            runners: components["schemas"]["runner"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          runners: components["schemas"]["runner"][];
         };
       };
     };
@@ -13736,7 +14326,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -13768,7 +14359,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13791,7 +14383,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -13813,13 +14406,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            runners: components["schemas"]["runner"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          runners: components["schemas"]["runner"][];
         };
       };
     };
@@ -13837,10 +14429,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-application"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-application"][];
       };
     };
   };
@@ -13865,10 +14456,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -13894,10 +14484,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -13916,10 +14505,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner"];
       };
     };
   };
@@ -13938,7 +14526,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint. */
@@ -13956,13 +14545,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            secrets: components["schemas"]["organization-actions-secret"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          secrets: components["schemas"]["organization-actions-secret"][];
         };
       };
     };
@@ -13976,10 +14564,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-public-key"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-public-key"];
       };
     };
   };
@@ -13994,10 +14581,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["organization-actions-secret"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["organization-actions-secret"];
       };
     };
   };
@@ -14086,12 +14672,17 @@ export interface operations {
         secret_name: components["parameters"]["secret_name"];
       };
     };
-    responses: {
-      /** Response when creating a secret */
-      201: unknown;
-      /** Response when updating a secret */
-      204: never;
-    };
+    responses:
+      | {
+          /** Response when creating a secret */
+          status: 201;
+          content: unknown;
+        }
+      | {
+          /** Response when updating a secret */
+          status: 204;
+          content: never;
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -14123,7 +14714,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint. */
@@ -14137,12 +14729,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            repositories: components["schemas"]["minimal-repository"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          total_count: number;
+          repositories: components["schemas"]["minimal-repository"][];
         };
       };
     };
@@ -14158,7 +14749,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -14179,12 +14771,17 @@ export interface operations {
         repository_id: number;
       };
     };
-    responses: {
-      /** Response when repository was added to the selected list */
-      204: never;
-      /** Response when visibility type is not set to selected */
-      409: unknown;
-    };
+    responses:
+      | {
+          /** Response when repository was added to the selected list */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response when visibility type is not set to selected */
+          status: 409;
+          content: unknown;
+        };
   };
   /** Removes a repository from an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint. */
   "actions/remove-selected-repo-from-org-secret": {
@@ -14196,12 +14793,17 @@ export interface operations {
         repository_id: number;
       };
     };
-    responses: {
-      /** Response when repository was removed from the selected list */
-      204: never;
-      /** Response when visibility type not set to selected */
-      409: unknown;
-    };
+    responses:
+      | {
+          /** Response when repository was removed from the selected list */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response when visibility type not set to selected */
+          status: 409;
+          content: unknown;
+        };
   };
   /**
    * **Note:** The audit log REST API is currently in beta and is subject to change.
@@ -14244,10 +14846,9 @@ export interface operations {
     };
     responses: {
       /** Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["audit-log-event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["audit-log-event"][];
       };
     };
   };
@@ -14258,15 +14859,18 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "orgs/check-blocked-user": {
     parameters: {
@@ -14275,16 +14879,19 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** If the user is blocked: */
-      204: never;
-      /** If the user is not blocked: */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
+    responses:
+      | {
+          /** If the user is blocked: */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** If the user is not blocked: */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-    };
   };
   "orgs/block-user": {
     parameters: {
@@ -14293,11 +14900,16 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   "orgs/unblock-user": {
     parameters: {
@@ -14308,7 +14920,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -14324,10 +14937,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credential-authorization"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["credential-authorization"][];
       };
     };
   };
@@ -14343,11 +14955,16 @@ export interface operations {
         credential_id: number;
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "activity/list-public-org-events": {
     parameters: {
@@ -14363,10 +14980,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -14383,16 +14999,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-invitation"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["organization-invitation"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "orgs/list-webhooks": {
     parameters: {
@@ -14406,16 +15025,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["org-hook"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["org-hook"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Here's how you can create a hook that posts payloads in JSON format: */
   "orgs/create-webhook": {
@@ -14424,19 +15046,25 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["org-hook"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["org-hook"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -14467,15 +15095,18 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-hook"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-hook"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "orgs/delete-webhook": {
     parameters: {
@@ -14484,11 +15115,16 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Updates a webhook configured in an organization. When you update a webhook, the `secret` will be overwritten. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for an organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization)." */
   "orgs/update-webhook": {
@@ -14498,16 +15134,22 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-hook"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-hook"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -14541,10 +15183,9 @@ export interface operations {
     };
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
   };
@@ -14562,10 +15203,9 @@ export interface operations {
     };
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
     requestBody: {
@@ -14587,11 +15227,16 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Enables an authenticated GitHub App to find the organization's installation information.
@@ -14606,10 +15251,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["installation"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["installation"];
       };
     };
   };
@@ -14628,13 +15272,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            installations: components["schemas"]["installation"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          installations: components["schemas"]["installation"][];
         };
       };
     };
@@ -14648,10 +15291,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["interaction-limit-response"];
       };
     };
   };
@@ -14662,15 +15304,18 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["interaction-limit-response"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": components["schemas"]["interaction-limit"];
@@ -14686,7 +15331,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`. */
@@ -14702,16 +15348,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-invitation"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["organization-invitation"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Invite people to an organization by using their GitHub user ID or their email address. In order to create invitations in an organization, the authenticated user must be an organization owner.
@@ -14724,16 +15373,22 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["organization-invitation"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["organization-invitation"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -14767,12 +15422,20 @@ export interface operations {
         invitation_id: components["parameters"]["invitation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   /** List all teams associated with an invitation. In order to see invitations in an organization, the authenticated user must be an organization owner. */
   "orgs/list-invitation-teams": {
@@ -14789,16 +15452,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * List issues in an organization assigned to the authenticated user.
@@ -14839,16 +15505,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** List all users who are members of an organization. If the authenticated user is also a member of this organization then both concealed and public members will be returned. */
   "orgs/list-members": {
@@ -14876,18 +15545,24 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          /** Response if requester is not an organization member */
+          status: 302;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** Response if requester is not an organization member */
-      302: never;
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Check if a user is, publicly or privately, a member of the organization. */
   "orgs/check-membership-for-user": {
@@ -14897,14 +15572,22 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if requester is an organization member and user is a member */
-      204: never;
-      /** Response if requester is not an organization member */
-      302: never;
-      /** Response if requester is an organization member and user is not a member */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if requester is an organization member and user is a member */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if requester is not an organization member */
+          status: 302;
+          content: never;
+        }
+      | {
+          /** Response if requester is an organization member and user is not a member */
+          status: 404;
+          content: unknown;
+        };
   };
   /** Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories. */
   "orgs/remove-member": {
@@ -14914,11 +15597,16 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /** In order to get a user's membership with an organization, the authenticated user must be an organization member. */
   "orgs/get-membership-for-user": {
@@ -14928,16 +15616,22 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-membership"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Only authenticated organization owners can add a member to the organization or update the member's role.
@@ -14957,16 +15651,22 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-membership"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -14992,12 +15692,20 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists the most recent migrations. */
   "migrations/list-for-org": {
@@ -15014,11 +15722,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["migration"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["migration"][];
       };
     };
   };
@@ -15029,16 +15736,22 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["migration"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["migration"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -15071,20 +15784,23 @@ export interface operations {
         migration_id: components["parameters"]["migration_id"];
       };
     };
-    responses: {
-      /**
-       * *   `pending`, which means the migration hasn't started yet.
-       * *   `exporting`, which means the migration is in progress.
-       * *   `exported`, which means the migration finished successfully.
-       * *   `failed`, which means the migration failed.
-       */
-      200: {
-        content: {
-          "application/json": components["schemas"]["migration"];
+    responses:
+      | {
+          /**
+           * *   `pending`, which means the migration hasn't started yet.
+           * *   `exporting`, which means the migration is in progress.
+           * *   `exported`, which means the migration finished successfully.
+           * *   `failed`, which means the migration failed.
+           */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["migration"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Fetches the URL to a migration archive. */
   "migrations/download-archive-for-org": {
@@ -15095,11 +15811,16 @@ export interface operations {
         migration_id: components["parameters"]["migration_id"];
       };
     };
-    responses: {
-      /** response */
-      302: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** response */
+          status: 302;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Deletes a previous migration archive. Migration archives are automatically deleted after seven days. */
   "migrations/delete-archive-for-org": {
@@ -15110,11 +15831,16 @@ export interface operations {
         migration_id: components["parameters"]["migration_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/rest/reference/repos#delete-a-repository) when the migration is complete and you no longer need the source data. */
   "migrations/unlock-repo-for-org": {
@@ -15127,11 +15853,16 @@ export interface operations {
         repo_name: components["parameters"]["repo_name"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** List all the repositories for this organization migration. */
   "migrations/list-repos-for-org": {
@@ -15148,16 +15879,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** List all users who are outside collaborators of an organization. */
   "orgs/list-outside-collaborators": {
@@ -15180,11 +15914,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -15196,22 +15929,31 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** User is getting converted asynchronously */
-      202: unknown;
-      /** User was converted */
-      204: never;
-      /** response */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** User is getting converted asynchronously */
+          status: 202;
+          content: unknown;
+        }
+      | {
+          /** User was converted */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** response */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Removing a user from this list will remove them from all the organization's repositories. */
   "orgs/remove-outside-collaborator": {
@@ -15221,19 +15963,22 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if user is a member of the organization */
-      422: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if user is a member of the organization */
+          status: 422;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
         };
-      };
-    };
   };
   /**
    * Gets a specific package in an organization.
@@ -15253,10 +15998,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package"];
       };
     };
   };
@@ -15277,13 +16021,24 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Restores an entire package in an organization.
@@ -15306,13 +16061,24 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Returns all package versions for a package owned by an organization.
@@ -15330,17 +16096,26 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["package-version"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Gets a specific package version in an organization.
@@ -15362,10 +16137,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package-version"];
       };
     };
   };
@@ -15388,13 +16162,24 @@ export interface operations {
         package_version_id: components["parameters"]["package_version_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Restores a specific package version in an organization.
@@ -15419,13 +16204,24 @@ export interface operations {
         package_version_id: components["parameters"]["package_version_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned. */
   "projects/list-for-org": {
@@ -15442,16 +16238,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["project"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["project"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      422: components["responses"]["validation_failed_simple"];
-    };
   };
   /** Creates an organization project board. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned. */
   "projects/create-for-org": {
@@ -15460,19 +16259,34 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["project"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["project"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -15499,11 +16313,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -15514,12 +16327,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if user is a public member */
-      204: never;
-      /** Response if user is not a public member */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if user is a public member */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if user is not a public member */
+          status: 404;
+          content: unknown;
+        };
   };
   /**
    * The user can publicize their own membership. (A user cannot publicize the membership for another user.)
@@ -15533,11 +16351,16 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   "orgs/remove-public-membership-for-authenticated-user": {
     parameters: {
@@ -15548,7 +16371,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Lists repositories for the specified organization. */
@@ -15572,11 +16396,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["minimal-repository"][];
       };
     };
   };
@@ -15596,19 +16419,25 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["repository"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["repository"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -15668,10 +16497,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-billing-usage"];
       };
     };
   };
@@ -15690,10 +16518,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["packages-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["packages-billing-usage"];
       };
     };
   };
@@ -15712,10 +16539,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["combined-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["combined-billing-usage"];
       };
     };
   };
@@ -15740,13 +16566,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {
-          Link?: string;
-        };
-        content: {
-          "application/json": components["schemas"]["group-mapping"];
-        };
+      status: 200;
+      headers: {
+        Link?: string;
+      };
+      content: {
+        "application/json": components["schemas"]["group-mapping"];
       };
     };
   };
@@ -15763,16 +16588,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
@@ -15785,16 +16613,22 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-full"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["team-full"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -15843,15 +16677,18 @@ export interface operations {
         team_slug: components["parameters"]["team_slug"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-full"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-full"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * To delete a team, the authenticated user must be an organization owner or team maintainer.
@@ -15870,7 +16707,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -15888,10 +16726,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-full"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["team-full"];
       };
     };
     requestBody: {
@@ -15946,11 +16783,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-discussion"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team-discussion"][];
       };
     };
   };
@@ -15971,10 +16807,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
     requestBody: {
@@ -16006,10 +16841,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
   };
@@ -16029,7 +16863,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16048,10 +16883,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
     requestBody: {
@@ -16089,11 +16923,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"][];
       };
     };
   };
@@ -16115,10 +16948,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
     requestBody: {
@@ -16147,10 +16979,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
   };
@@ -16171,7 +17002,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16191,10 +17023,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
     requestBody: {
@@ -16231,11 +17062,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["reaction"][];
       };
     };
   };
@@ -16256,10 +17086,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["reaction"];
       };
     };
     requestBody: {
@@ -16289,7 +17118,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16316,11 +17146,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["reaction"][];
       };
     };
   };
@@ -16340,10 +17169,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["reaction"];
       };
     };
     requestBody: {
@@ -16372,7 +17200,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16396,11 +17225,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-invitation"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["organization-invitation"][];
       };
     };
   };
@@ -16432,11 +17260,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -16458,16 +17285,19 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-membership"];
+          };
+        }
+      | {
+          /** Response if user has no team membership */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Response if user has no team membership */
-      404: unknown;
-    };
   };
   /**
    * Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -16491,29 +17321,33 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-membership"];
-        };
-      };
-      /** Response if team synchronization is set up */
-      403: unknown;
-      /** Response if you attempt to add an organization to a team */
-      422: {
-        content: {
-          "application/json": {
-            message?: string;
-            errors?: {
-              code?: string;
-              field?: string;
-              resource?: string;
-            }[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-membership"];
+          };
+        }
+      | {
+          /** Response if team synchronization is set up */
+          status: 403;
+          content: unknown;
+        }
+      | {
+          /** Response if you attempt to add an organization to a team */
+          status: 422;
+          content: {
+            "application/json": {
+              message?: string;
+              errors?: {
+                code?: string;
+                field?: string;
+                resource?: string;
+              }[];
+            };
           };
         };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -16545,12 +17379,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if team synchronization is set up */
-      403: unknown;
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if team synchronization is set up */
+          status: 403;
+          content: unknown;
+        };
   };
   /**
    * Lists the organization projects for a team.
@@ -16573,11 +17412,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-project"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team-project"][];
       };
     };
   };
@@ -16595,16 +17433,19 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-project"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-project"];
+          };
+        }
+      | {
+          /** Response if project is not managed by this team */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Response if project is not managed by this team */
-      404: unknown;
-    };
   };
   /**
    * Adds an organization project to a team. To add a project to a team or update the team's permission on a project, the authenticated user must have `admin` permissions for the project. The project and team must be part of the same organization.
@@ -16620,19 +17461,22 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if the project is not owned by the organization */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if the project is not owned by the organization */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
         };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -16664,7 +17508,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16688,11 +17533,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["minimal-repository"][];
       };
     };
   };
@@ -16715,18 +17559,24 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Alternative response with repository permissions */
-      200: {
-        content: {
-          "application/vnd.github.v3.repository+json": components["schemas"]["team-repository"];
+    responses:
+      | {
+          /** Alternative response with repository permissions */
+          status: 200;
+          content: {
+            "application/vnd.github.v3.repository+json": components["schemas"]["team-repository"];
+          };
+        }
+      | {
+          /** Response if team has permission for the repository */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if team does not have permission for the repository */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Response if team has permission for the repository */
-      204: never;
-      /** Response if team does not have permission for the repository */
-      404: unknown;
-    };
   };
   /**
    * To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
@@ -16747,7 +17597,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -16784,7 +17635,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -16804,10 +17656,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["group-mapping"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["group-mapping"];
       };
     };
   };
@@ -16828,10 +17679,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["group-mapping"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["group-mapping"];
       };
     };
     requestBody: {
@@ -16871,11 +17721,10 @@ export interface operations {
     };
     responses: {
       /** Response if child teams exist */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team"][];
       };
     };
   };
@@ -16886,18 +17735,30 @@ export interface operations {
         card_id: components["parameters"]["card_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project-card"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project-card"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "projects/delete-card": {
     parameters: {
@@ -16906,23 +17767,35 @@ export interface operations {
         card_id: components["parameters"]["card_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      /** Forbidden */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
-            errors?: string[];
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Forbidden */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+              errors?: string[];
+            };
           };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "projects/update-card": {
     parameters: {
@@ -16931,19 +17804,34 @@ export interface operations {
         card_id: components["parameters"]["card_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project-card"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project-card"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -16962,46 +17850,57 @@ export interface operations {
         card_id: components["parameters"]["card_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": { [key: string]: any };
-        };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      /** Forbidden */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
-            errors?: {
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": { [key: string]: any };
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Forbidden */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+              errors?: {
+                code?: string;
+                message?: string;
+                resource?: string;
+                field?: string;
+              }[];
+            };
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          /** Service Unavailable */
+          status: 503;
+          content: {
+            "application/json": {
               code?: string;
               message?: string;
-              resource?: string;
-              field?: string;
-            }[];
+              documentation_url?: string;
+              errors?: {
+                code?: string;
+                message?: string;
+              }[];
+            };
           };
         };
-      };
-      422: components["responses"]["validation_failed"];
-      /** Service Unavailable */
-      503: {
-        content: {
-          "application/json": {
-            code?: string;
-            message?: string;
-            documentation_url?: string;
-            errors?: {
-              code?: string;
-              message?: string;
-            }[];
-          };
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17020,18 +17919,30 @@ export interface operations {
         column_id: components["parameters"]["column_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project-column"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project-column"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "projects/delete-column": {
     parameters: {
@@ -17040,13 +17951,24 @@ export interface operations {
         column_id: components["parameters"]["column_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   "projects/update-column": {
     parameters: {
@@ -17055,17 +17977,26 @@ export interface operations {
         column_id: components["parameters"]["column_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project-column"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project-column"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17090,18 +18021,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["project-card"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["project-card"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key.
@@ -17115,39 +18055,50 @@ export interface operations {
         column_id: components["parameters"]["column_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["project-card"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      /** Validation Failed */
-      422: {
-        content: {
-          "application/json":
-            | components["schemas"]["validation-error"]
-            | components["schemas"]["validation-error-simple"];
-        };
-      };
-      /** Service Unavailable */
-      503: {
-        content: {
-          "application/json": {
-            code?: string;
-            message?: string;
-            documentation_url?: string;
-            errors?: {
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["project-card"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Validation Failed */
+          status: 422;
+          content: {
+            "application/json":
+              | components["schemas"]["validation-error"]
+              | components["schemas"]["validation-error-simple"];
+          };
+        }
+      | {
+          /** Service Unavailable */
+          status: 503;
+          content: {
+            "application/json": {
               code?: string;
               message?: string;
-            }[];
+              documentation_url?: string;
+              errors?: {
+                code?: string;
+                message?: string;
+              }[];
+            };
           };
         };
-      };
-    };
     requestBody: {
       content: {
         "application/json":
@@ -17171,18 +18122,30 @@ export interface operations {
         column_id: components["parameters"]["column_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": { [key: string]: any };
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": { [key: string]: any };
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17199,17 +18162,26 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Deletes a project board. Returns a `404 Not Found` status if projects are disabled. */
   "projects/delete": {
@@ -17218,24 +18190,39 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** Delete Success */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      /** Forbidden */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
-            errors?: string[];
+    responses:
+      | {
+          /** Delete Success */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Forbidden */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+              errors?: string[];
+            };
           };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-    };
   };
   /** Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned. */
   "projects/update": {
@@ -17244,30 +18231,46 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["project"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      /** Forbidden */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
-            errors?: string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["project"];
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          /** Forbidden */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+              errors?: string[];
+            };
+          };
+        }
+      | {
+          /** Response if the authenticated user does not have access to the project */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      /** Response if the authenticated user does not have access to the project */
-      404: unknown;
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17305,21 +18308,39 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Adds a collaborator to an organization project and sets their permission level. You must be an organization owner or a project `admin` to add a collaborator. */
   "projects/add-collaborator": {
@@ -17329,16 +18350,36 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -17356,16 +18397,36 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   /** Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level. */
   "projects/get-permission-for-user": {
@@ -17375,20 +18436,38 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository-collaborator-permission"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["repository-collaborator-permission"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "projects/list-columns": {
     parameters: {
@@ -17402,18 +18481,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["project-column"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["project-column"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   "projects/create-column": {
     parameters: {
@@ -17421,18 +18509,30 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["project-column"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["project-column"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17449,17 +18549,23 @@ export interface operations {
    */
   "rate-limit/get": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["rate-limit-overview"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["rate-limit-overview"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions API. We recommend migrating your existing code to use the new delete reactions endpoints. For more information, see this [blog post](https://developer.github.com/changes/2020-02-26-new-delete-reactions-endpoints/).
@@ -17472,15 +18578,32 @@ export interface operations {
         reaction_id: components["parameters"]["reaction-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      410: components["responses"]["gone"];
-      415: components["responses"]["preview_header_missing"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        };
   };
   /**
    * When you pass the `scarlet-witch-preview` media type, requests to get a repository will also return the repository's code of conduct if it can be detected from the repository's code of conduct file.
@@ -17494,17 +18617,26 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["full-repository"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["full-repository"];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
@@ -17519,20 +18651,26 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** If an organization owner has configured the organization to prevent members from deleting organization-owned repositories, a member will get this response: */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** If an organization owner has configured the organization to prevent members from deleting organization-owned repositories, a member will get this response: */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/rest/reference/repos#replace-all-repository-topics) endpoint. */
   "repos/update": {
@@ -17542,17 +18680,26 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["full-repository"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["full-repository"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -17609,13 +18756,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            artifacts: components["schemas"]["artifact"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          artifacts: components["schemas"]["artifact"][];
         };
       };
     };
@@ -17632,10 +18778,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["artifact"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["artifact"];
       };
     };
   };
@@ -17651,7 +18796,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -17672,7 +18818,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      302: never;
+      status: 302;
+      content: never;
     };
   };
   /** Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. */
@@ -17687,10 +18834,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      202: {
-        content: {
-          "application/json": components["schemas"]["job"];
-        };
+      status: 202;
+      content: {
+        "application/json": components["schemas"]["job"];
       };
     };
   };
@@ -17711,7 +18857,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      302: never;
+      status: 302;
+      content: never;
     };
   };
   /**
@@ -17729,10 +18876,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-repository-permissions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-repository-permissions"];
       };
     };
   };
@@ -17752,7 +18898,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -17777,10 +18924,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["selected-actions"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["selected-actions"];
       };
     };
   };
@@ -17802,7 +18948,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -17826,13 +18973,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            runners: components["schemas"]["runner"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          runners: components["schemas"]["runner"][];
         };
       };
     };
@@ -17851,10 +18997,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner-application"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner-application"][];
       };
     };
   };
@@ -17879,10 +19024,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -17907,10 +19051,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["authentication-token"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["authentication-token"];
       };
     };
   };
@@ -17931,10 +19074,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["runner"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["runner"];
       };
     };
   };
@@ -17955,7 +19097,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -17986,13 +19129,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            workflow_runs: components["schemas"]["workflow-run"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          workflow_runs: components["schemas"]["workflow-run"][];
         };
       };
     };
@@ -18009,10 +19151,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["workflow-run"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["workflow-run"];
       };
     };
   };
@@ -18032,7 +19173,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. */
@@ -18047,10 +19189,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["environment-approvals"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["environment-approvals"][];
       };
     };
   };
@@ -18072,13 +19213,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            artifacts: components["schemas"]["artifact"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          artifacts: components["schemas"]["artifact"][];
         };
       };
     };
@@ -18095,7 +19235,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      202: unknown;
+      status: 202;
+      content: unknown;
     };
   };
   /** Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters). */
@@ -18122,13 +19263,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            jobs: components["schemas"]["job"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          jobs: components["schemas"]["job"][];
         };
       };
     };
@@ -18150,7 +19290,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      302: never;
+      status: 302;
+      content: never;
     };
   };
   /** Deletes all logs for a workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint. */
@@ -18165,7 +19306,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -18184,10 +19326,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pending-deployment"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["pending-deployment"][];
       };
     };
   };
@@ -18207,10 +19348,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deployment"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["deployment"][];
       };
     };
     requestBody: {
@@ -18238,7 +19378,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: unknown;
+      status: 201;
+      content: unknown;
     };
   };
   /**
@@ -18257,10 +19398,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["workflow-run-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["workflow-run-usage"];
       };
     };
   };
@@ -18280,13 +19420,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            secrets: components["schemas"]["actions-secret"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          secrets: components["schemas"]["actions-secret"][];
         };
       };
     };
@@ -18301,10 +19440,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-public-key"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-public-key"];
       };
     };
   };
@@ -18320,10 +19458,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-secret"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-secret"];
       };
     };
   };
@@ -18413,12 +19550,17 @@ export interface operations {
         secret_name: components["parameters"]["secret_name"];
       };
     };
-    responses: {
-      /** Response when creating a secret */
-      201: unknown;
-      /** Response when updating a secret */
-      204: never;
-    };
+    responses:
+      | {
+          /** Response when creating a secret */
+          status: 201;
+          content: unknown;
+        }
+      | {
+          /** Response when updating a secret */
+          status: 204;
+          content: never;
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -18442,7 +19584,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Lists the workflows in a repository. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. */
@@ -18461,13 +19604,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            workflows: components["schemas"]["workflow"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          workflows: components["schemas"]["workflow"][];
         };
       };
     };
@@ -18484,10 +19626,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["workflow"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["workflow"];
       };
     };
   };
@@ -18507,7 +19648,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -18528,7 +19670,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
     requestBody: {
       content: {
@@ -18557,7 +19700,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -18590,13 +19734,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            workflow_runs: components["schemas"]["workflow-run"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          workflow_runs: components["schemas"]["workflow-run"][];
         };
       };
     };
@@ -18617,10 +19760,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["workflow-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["workflow-usage"];
       };
     };
   };
@@ -18638,16 +19780,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Checks if a user has permission to be assigned to an issue in this repository.
@@ -18664,16 +19809,19 @@ export interface operations {
         assignee: string;
       };
     };
-    responses: {
-      /** If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned. */
-      204: never;
-      /** Otherwise a `404` status code is returned. */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
+    responses:
+      | {
+          /** If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned. */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Otherwise a `404` status code is returned. */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-    };
   };
   /** Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)". */
   "repos/enable-automated-security-fixes": {
@@ -18685,7 +19833,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)". */
@@ -18698,7 +19847,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "repos/list-branches": {
@@ -18716,16 +19866,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["short-branch"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["short-branch"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "repos/get-branch": {
     parameters: {
@@ -18736,16 +19889,22 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["branch-with-protection"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["branch-with-protection"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/get-branch-protection": {
@@ -18757,15 +19916,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["branch-protection"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["branch-protection"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -18785,18 +19947,30 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["protected-branch"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -18854,11 +20028,16 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/get-admin-branch-protection": {
@@ -18872,10 +20051,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch-admin-enforced"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["protected-branch-admin-enforced"];
       };
     };
   };
@@ -18895,10 +20073,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch-admin-enforced"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["protected-branch-admin-enforced"];
       };
     };
   };
@@ -18916,11 +20093,16 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** No Content */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** No Content */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/get-pull-request-review-protection": {
@@ -18934,10 +20116,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/vnd.github.luke-cage-preview+json": components["schemas"]["protected-branch-pull-request-review"];
-        };
+      status: 200;
+      content: {
+        "application/vnd.github.luke-cage-preview+json": components["schemas"]["protected-branch-pull-request-review"];
       };
     };
   };
@@ -18951,11 +20132,16 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** No Content */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** No Content */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -18973,15 +20159,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch-pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["protected-branch-pull-request-review"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19018,15 +20207,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch-admin-enforced"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["protected-branch-admin-enforced"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19042,15 +20234,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["protected-branch-admin-enforced"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["protected-branch-admin-enforced"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19066,11 +20261,16 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** No Content */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** No Content */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/get-status-checks-protection": {
@@ -19082,15 +20282,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["status-check-policy"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["status-check-policy"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/remove-status-check-protection": {
@@ -19104,7 +20307,8 @@ export interface operations {
     };
     responses: {
       /** No Content */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -19121,16 +20325,22 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["status-check-policy"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["status-check-policy"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19152,15 +20362,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": string[];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation. */
   "repos/set-status-check-contexts": {
@@ -19172,16 +20385,22 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": string[];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19201,17 +20420,26 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": string[];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19231,16 +20459,22 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": string[];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": string[];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19266,15 +20500,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["branch-restriction-policy"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["branch-restriction-policy"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19292,7 +20529,8 @@ export interface operations {
     };
     responses: {
       /** No Content */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -19309,15 +20547,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["integration"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19337,15 +20578,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["integration"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19373,15 +20617,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["integration"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19409,15 +20656,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["integration"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["integration"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19441,15 +20691,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19469,15 +20722,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19505,15 +20761,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19541,15 +20800,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19573,15 +20835,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -19601,15 +20866,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19637,15 +20905,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19673,15 +20944,18 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19717,17 +20991,26 @@ export interface operations {
         branch: components["parameters"]["branch"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["branch-with-protection"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["branch-with-protection"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -19753,10 +21036,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["check-run"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["check-run"];
       };
     };
     requestBody: {
@@ -19866,10 +21148,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["check-run"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["check-run"];
       };
     };
   };
@@ -19889,10 +21170,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["check-run"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["check-run"];
       };
     };
     requestBody: {
@@ -20002,11 +21282,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["check-annotation"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["check-annotation"][];
       };
     };
   };
@@ -20024,10 +21303,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["check-suite"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["check-suite"];
       };
     };
     requestBody: {
@@ -20049,10 +21327,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["check-suite-preference"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["check-suite-preference"];
       };
     };
     requestBody: {
@@ -20085,10 +21362,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["check-suite"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["check-suite"];
       };
     };
   };
@@ -20120,13 +21396,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            check_runs: components["schemas"]["check-run"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          check_runs: components["schemas"]["check-run"][];
         };
       };
     };
@@ -20147,7 +21422,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: unknown;
+      status: 201;
+      content: unknown;
     };
   };
   /**
@@ -20182,17 +21458,26 @@ export interface operations {
         state?: components["schemas"]["code-scanning-alert-state"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-alert-items"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-alert-items"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Gets a single code scanning alert. You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read permission to use this endpoint.
@@ -20209,17 +21494,26 @@ export interface operations {
         alert_number: components["parameters"]["alert_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-alert"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-alert"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /** Updates the status of a single code scanning alert. You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` write permission to use this endpoint. */
   "code-scanning/update-alert": {
@@ -20231,17 +21525,26 @@ export interface operations {
         alert_number: components["parameters"]["alert_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-alert"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-alert"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_write"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_write"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -20269,17 +21572,26 @@ export interface operations {
         ref?: components["parameters"]["git_ref"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-alert-instance"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-alert-instance"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Lists the details of all code scanning analyses for a repository,
@@ -20320,17 +21632,26 @@ export interface operations {
         sarif_id?: components["schemas"]["code-scanning-analysis-sarif-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-analysis"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-analysis"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Gets a specified code scanning analysis for a repository.
@@ -20365,17 +21686,26 @@ export interface operations {
         analysis_id: number;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-analysis"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-analysis"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Deletes a specified code scanning analysis from a repository. For
@@ -20456,18 +21786,30 @@ export interface operations {
         confirm_delete?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-analysis-deletion"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-analysis-deletion"];
+          };
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_write"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      400: components["responses"]["bad_request"];
-      403: components["responses"]["code_scanning_forbidden_write"];
-      404: components["responses"]["not_found"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` write permission to use this endpoint.
@@ -20491,21 +21833,36 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      202: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-sarifs-receipt"];
+    responses:
+      | {
+          /** response */
+          status: 202;
+          content: {
+            "application/json": components["schemas"]["code-scanning-sarifs-receipt"];
+          };
+        }
+      | {
+          /** Response if the sarif field is invalid */
+          status: 400;
+          content: unknown;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_write"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          /** Response if the sarif field is too large */
+          status: 413;
+          content: unknown;
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      /** Response if the sarif field is invalid */
-      400: unknown;
-      403: components["responses"]["code_scanning_forbidden_write"];
-      404: components["responses"]["not_found"];
-      /** Response if the sarif field is too large */
-      413: unknown;
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -20535,18 +21892,27 @@ export interface operations {
         sarif_id: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-scanning-sarifs-status"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["code-scanning-sarifs-status"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["code_scanning_forbidden_read"];
+        }
+      | {
+          /** Response if the sarif id does not match any upload */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      403: components["responses"]["code_scanning_forbidden_read"];
-      /** Response if the sarif id does not match any upload */
-      404: unknown;
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
@@ -20573,16 +21939,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["collaborator"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["collaborator"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
@@ -20597,12 +21966,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if user is a collaborator */
-      204: never;
-      /** Response if user is not a collaborator */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if user is a collaborator */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if user is not a collaborator */
+          status: 404;
+          content: unknown;
+        };
   };
   /**
    * This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
@@ -20625,18 +21999,27 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response when a new invitation is created */
-      201: {
-        content: {
-          "application/json": components["schemas"]["repository-invitation"];
+    responses:
+      | {
+          /** Response when a new invitation is created */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["repository-invitation"];
+          };
+        }
+      | {
+          /** Response when person is already a collaborator */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** Response when person is already a collaborator */
-      204: never;
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -20664,7 +22047,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Checks the repository permission of a collaborator. The possible repository permissions are `admin`, `write`, `read`, and `none`. */
@@ -20676,15 +22060,18 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if user has admin permissions */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository-collaborator-permission"];
+    responses:
+      | {
+          /** Response if user has admin permissions */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["repository-collaborator-permission"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Commit Comments use [these custom media types](https://docs.github.com/rest/reference/repos#custom-media-types). You can read more about the use of media types in the API [here](https://docs.github.com/rest/overview/media-types/).
@@ -20706,11 +22093,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["commit-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["commit-comment"][];
       };
     };
   };
@@ -20723,15 +22109,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["commit-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["commit-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "repos/delete-commit-comment": {
     parameters: {
@@ -20742,11 +22131,16 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "repos/update-commit-comment": {
     parameters: {
@@ -20757,15 +22151,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["commit-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["commit-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -20793,17 +22190,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["reaction"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** Create a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments). A response with a `Status: 200 OK` means that you already added the reaction type to this commit comment. */
   "reactions/create-for-commit-comment": {
@@ -20815,22 +22218,29 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Reaction exists */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
+    responses:
+      | {
+          /** Reaction exists */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          /** Reaction created */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** Reaction created */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -20857,7 +22267,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -20913,19 +22324,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["commit"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["commit"][];
+          };
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["internal_error"];
         };
-      };
-      400: components["responses"]["bad_request"];
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-      500: components["responses"]["internal_error"];
-    };
   };
   /**
    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -20941,16 +22364,22 @@ export interface operations {
         commit_sha: components["parameters"]["commit_sha"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["branch-short"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["branch-short"][];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Use the `:commit_sha` to specify the commit that will have its comments listed. */
   "repos/list-comments-for-commit": {
@@ -20970,11 +22399,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["commit-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["commit-comment"][];
       };
     };
   };
@@ -20992,19 +22420,25 @@ export interface operations {
         commit_sha: components["parameters"]["commit_sha"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["commit-comment"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["commit-comment"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -21036,16 +22470,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["pull-request-simple"][];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.
@@ -21094,17 +22531,26 @@ export interface operations {
         ref: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["commit"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["commit"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["internal_error"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-      500: components["responses"]["internal_error"];
-    };
   };
   /**
    * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
@@ -21134,13 +22580,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            check_runs: components["schemas"]["check-run"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          check_runs: components["schemas"]["check-run"][];
         };
       };
     };
@@ -21171,13 +22616,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            check_suites: components["schemas"]["check-suite"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          check_suites: components["schemas"]["check-suite"][];
         };
       };
     };
@@ -21202,15 +22646,18 @@ export interface operations {
         ref: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["combined-commit-status"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["combined-commit-status"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
@@ -21232,16 +22679,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["status"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["status"][];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-    };
   };
   /**
    * Returns the contents of the repository's code of conduct file, if one is detected.
@@ -21257,10 +22707,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-of-conduct"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["code-of-conduct"];
       };
     };
   };
@@ -21287,10 +22736,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["community-profile"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["community-profile"];
       };
     };
   };
@@ -21346,16 +22794,22 @@ export interface operations {
         head: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["commit-comparison"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["commit-comparison"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["internal_error"];
         };
-      };
-      404: components["responses"]["not_found"];
-      500: components["responses"]["internal_error"];
-    };
   };
   /**
    * Gets the contents of a file or directory in a repository. Specify the file path or directory in `:path`. If you omit
@@ -21404,22 +22858,31 @@ export interface operations {
         ref?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/vnd.github.v3.object": components["schemas"]["content-tree"];
-          "application/json":
-            | components["schemas"]["content-directory"]
-            | components["schemas"]["content-file"]
-            | components["schemas"]["content-symlink"]
-            | components["schemas"]["content-submodule"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/vnd.github.v3.object": components["schemas"]["content-tree"];
+            "application/json":
+              | components["schemas"]["content-directory"]
+              | components["schemas"]["content-file"]
+              | components["schemas"]["content-symlink"]
+              | components["schemas"]["content-submodule"];
+          };
+        }
+      | {
+          status: 302;
+          content: components["responses"]["found"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      302: components["responses"]["found"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Creates a new file or replaces an existing file in a repository. */
   "repos/create-or-update-file-contents": {
@@ -21431,23 +22894,33 @@ export interface operations {
         path: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file-commit"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file-commit"];
+          };
+        }
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["file-commit"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["file-commit"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -21497,18 +22970,30 @@ export interface operations {
         path: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file-commit"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file-commit"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -21556,19 +23041,28 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** Response if repository contains content */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["contributor"][];
+    responses:
+      | {
+          /** Response if repository contains content */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["contributor"][];
+          };
+        }
+      | {
+          /** Response if repository is empty */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      /** Response if repository is empty */
-      204: never;
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Simple filtering of deployments is available via query parameters: */
   "repos/list-deployments": {
@@ -21594,11 +23088,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["deployment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["deployment"][];
       };
     };
   };
@@ -21656,32 +23149,37 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["deployment"];
-        };
-      };
-      /** Merged branch response */
-      202: {
-        content: {
-          "application/json": {
-            message?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["deployment"];
           };
-        };
-      };
-      /** response */
-      409: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+        }
+      | {
+          /** Merged branch response */
+          status: 202;
+          content: {
+            "application/json": {
+              message?: string;
+            };
           };
+        }
+      | {
+          /** response */
+          status: 409;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -21722,15 +23220,18 @@ export interface operations {
         deployment_id: components["parameters"]["deployment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deployment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deployment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * To ensure there can always be an active deployment, you can only delete an _inactive_ deployment. Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
@@ -21751,12 +23252,20 @@ export interface operations {
         deployment_id: components["parameters"]["deployment_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
+        };
   };
   /** Users with pull access can view deployment statuses for a deployment: */
   "repos/list-deployment-statuses": {
@@ -21774,16 +23283,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["deployment-status"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["deployment-status"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Users with `push` access can create deployment statuses for a given deployment.
@@ -21799,18 +23311,21 @@ export interface operations {
         deployment_id: components["parameters"]["deployment_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["deployment-status"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["deployment-status"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -21853,16 +23368,22 @@ export interface operations {
         status_id: number;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deployment-status"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deployment-status"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
@@ -21883,11 +23404,16 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -21913,13 +23439,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": {
-            /** The number of environments in this repository */
-            total_count?: number;
-            environments?: components["schemas"]["environment"][];
-          };
+      status: 200;
+      content: {
+        "application/json": {
+          /** The number of environments in this repository */
+          total_count?: number;
+          environments?: components["schemas"]["environment"][];
         };
       };
     };
@@ -21936,10 +23461,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["environment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["environment"];
       };
     };
   };
@@ -21961,20 +23485,21 @@ export interface operations {
         environment_name: components["parameters"]["environment_name"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["environment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["environment"];
+          };
+        }
+      | {
+          /** Validation error when the environment name is invalid or when `protected_branches` and `custom_branch_policies` in `deployment_branch_policy` are set to the same value */
+          status: 422;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-      /** Validation error when the environment name is invalid or when `protected_branches` and `custom_branch_policies` in `deployment_branch_policy` are set to the same value */
-      422: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22002,7 +23527,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "activity/list-repo-events": {
@@ -22020,10 +23546,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -22042,16 +23567,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
         };
-      };
-      400: components["responses"]["bad_request"];
-    };
   };
   /**
    * Create a fork for the authenticated user.
@@ -22065,18 +23593,30 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      202: {
-        content: {
-          "application/json": components["schemas"]["repository"];
+    responses:
+      | {
+          /** response */
+          status: 202;
+          content: {
+            "application/json": components["schemas"]["repository"];
+          };
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      400: components["responses"]["bad_request"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22093,21 +23633,33 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["short-blob"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["short-blob"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22132,17 +23684,26 @@ export interface operations {
         file_sha: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["blob"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["blob"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Creates a new Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
@@ -22183,19 +23744,25 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["git-commit"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["git-commit"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22270,15 +23837,18 @@ export interface operations {
         commit_sha: components["parameters"]["commit_sha"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["git-commit"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["git-commit"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Returns an array of references from your Git database that match the supplied name. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be returned as an array.
@@ -22306,11 +23876,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["git-ref"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["git-ref"][];
       };
     };
   };
@@ -22328,15 +23897,18 @@ export interface operations {
         ref: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["git-ref"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["git-ref"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches. */
   "git/create-ref": {
@@ -22346,18 +23918,21 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["git-ref"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["git-ref"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22379,11 +23954,16 @@ export interface operations {
         ref: string;
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   "git/update-ref": {
     parameters: {
@@ -22394,15 +23974,18 @@ export interface operations {
         ref: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["git-ref"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["git-ref"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22453,18 +24036,21 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["git-tag"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["git-tag"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22527,15 +24113,18 @@ export interface operations {
         tag_sha: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["git-tag"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["git-tag"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
@@ -22549,20 +24138,29 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["git-tree"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["git-tree"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22613,16 +24211,22 @@ export interface operations {
         recursive?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["git-tree"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["git-tree"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "repos/list-webhooks": {
     parameters: {
@@ -22637,16 +24241,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["hook"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["hook"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
@@ -22659,20 +24266,29 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["hook"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["hook"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22704,15 +24320,18 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["hook"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["hook"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "repos/delete-webhook": {
     parameters: {
@@ -22722,11 +24341,16 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository)." */
   "repos/update-webhook": {
@@ -22737,16 +24361,22 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["hook"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["hook"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22786,10 +24416,9 @@ export interface operations {
     };
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
   };
@@ -22808,10 +24437,9 @@ export interface operations {
     };
     responses: {
       /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook-config"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["webhook-config"];
       };
     };
     requestBody: {
@@ -22834,11 +24462,16 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
@@ -22853,11 +24486,16 @@ export interface operations {
         hook_id: components["parameters"]["hook-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * View the progress of an import.
@@ -22902,15 +24540,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["import"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["import"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Start a source import to a GitHub repository using GitHub Importer. */
   "migrations/start-import": {
@@ -22920,19 +24561,25 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["import"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["import"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -22960,7 +24607,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -22976,10 +24624,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["import"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["import"];
       };
     };
     requestBody: {
@@ -23011,15 +24658,18 @@ export interface operations {
         since?: components["parameters"]["since-user"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["porter-author"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["porter-author"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Update an author's identity for the import. Your application can continue updating authors any time before you push new commits to the repository. */
   "migrations/map-commit-author": {
@@ -23030,16 +24680,22 @@ export interface operations {
         author_id: number;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["porter-author"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["porter-author"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23062,10 +24718,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["porter-large-file"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["porter-large-file"][];
       };
     };
   };
@@ -23077,15 +24732,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["import"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["import"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23107,16 +24765,22 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["installation"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["installation"];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Shows which type of GitHub user can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response. */
   "interactions/get-restrictions-for-repo": {
@@ -23128,10 +24792,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["interaction-limit-response"];
       };
     };
   };
@@ -23143,16 +24806,19 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["interaction-limit-response"];
+          };
+        }
+      | {
+          /** Conflict */
+          status: 409;
+          content: unknown;
         };
-      };
-      /** Conflict */
-      409: unknown;
-    };
     requestBody: {
       content: {
         "application/json": components["schemas"]["interaction-limit"];
@@ -23167,12 +24833,17 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Conflict */
-      409: unknown;
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Conflict */
+          status: 409;
+          content: unknown;
+        };
   };
   /** When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations. */
   "repos/list-invitations": {
@@ -23190,11 +24861,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["repository-invitation"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["repository-invitation"][];
       };
     };
   };
@@ -23209,7 +24879,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "repos/update-invitation": {
@@ -23223,10 +24894,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository-invitation"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["repository-invitation"];
       };
     };
     requestBody: {
@@ -23277,18 +24947,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-simple"][];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://help.github.com/articles/disabling-issues/), the API returns a `410 Gone` status.
@@ -23302,22 +24981,37 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["issue"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-        content: {
-          "application/json": components["schemas"]["issue"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23364,17 +25058,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-comment"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-comment"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "issues/get-comment": {
     parameters: {
@@ -23385,15 +25085,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issue-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "issues/delete-comment": {
     parameters: {
@@ -23406,7 +25109,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "issues/update-comment": {
@@ -23418,15 +25122,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issue-comment"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23454,17 +25161,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["reaction"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** Create a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments). A response with a `Status: 200 OK` means that you already added the reaction type to this issue comment. */
   "reactions/create-for-issue-comment": {
@@ -23476,22 +25189,29 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Reaction exists */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
+    responses:
+      | {
+          /** Reaction exists */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          /** Reaction created */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** Reaction created */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23518,7 +25238,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "issues/list-events-for-repo": {
@@ -23534,16 +25255,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-event"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-event"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
   };
   "issues/get-event": {
     parameters: {
@@ -23553,17 +25277,26 @@ export interface operations {
         event_id: number;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue-event"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issue-event"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-    };
   };
   /**
    * The API returns a [`301 Moved Permanently` status](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was
@@ -23587,18 +25320,30 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issue"];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-    };
   };
   /** Issue owners and users with push access can edit an issue. */
   "issues/update": {
@@ -23610,20 +25355,38 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issue"];
+          };
+        }
+      | {
+          status: 301;
+          content: components["responses"]["moved_permanently"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      301: components["responses"]["moved_permanently"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23664,10 +25427,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["issue-simple"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["issue-simple"];
       };
     };
     requestBody: {
@@ -23691,10 +25453,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issue-simple"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["issue-simple"];
       };
     };
     requestBody: {
@@ -23724,17 +25485,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-comment"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-comment"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-    };
   };
   /** This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-abuse-rate-limits)" for details. */
   "issues/create-comment": {
@@ -23746,21 +25513,33 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["issue-comment"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["issue-comment"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23785,16 +25564,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-event-for-issue"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-event-for-issue"][];
+          };
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      410: components["responses"]["gone"];
-    };
   };
   "issues/list-labels-on-issue": {
     parameters: {
@@ -23811,16 +25593,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["label"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["label"][];
+          };
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      410: components["responses"]["gone"];
-    };
   };
   /** Removes any previous labels and sets the new labels for an issue. */
   "issues/set-labels": {
@@ -23832,16 +25617,22 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["label"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["label"][];
+          };
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23860,16 +25651,22 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["label"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["label"][];
+          };
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -23888,11 +25685,16 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      410: components["responses"]["gone"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        };
   };
   /** Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist. */
   "issues/remove-label": {
@@ -23905,16 +25707,22 @@ export interface operations {
         name: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["label"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["label"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
         };
-      };
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-    };
   };
   /**
    * Users with push access can lock an issue or pull request's conversation.
@@ -23930,14 +25738,28 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -23963,12 +25785,20 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** List the reactions to an [issue](https://docs.github.com/rest/reference/issues). */
   "reactions/list-for-issue": {
@@ -23988,18 +25818,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["reaction"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** Create a reaction to an [issue](https://docs.github.com/rest/reference/issues/). A response with a `Status: 200 OK` means that you already added the reaction type to this issue. */
   "reactions/create-for-issue": {
@@ -24011,16 +25850,22 @@ export interface operations {
         issue_number: components["parameters"]["issue_number"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24047,7 +25892,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "issues/list-events-for-timeline": {
@@ -24065,18 +25911,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue-event-for-issue"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue-event-for-issue"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "repos/list-deploy-keys": {
     parameters: {
@@ -24093,11 +25948,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["deploy-key"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["deploy-key"][];
       };
     };
   };
@@ -24109,18 +25963,21 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["deploy-key"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["deploy-key"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24147,15 +26004,18 @@ export interface operations {
         key_id: components["parameters"]["key_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deploy-key"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deploy-key"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead. */
   "repos/delete-deploy-key": {
@@ -24169,7 +26029,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "issues/list-labels-for-repo": {
@@ -24185,16 +26046,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["label"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["label"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "issues/create-label": {
     parameters: {
@@ -24203,19 +26067,25 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["label"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["label"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24237,15 +26107,18 @@ export interface operations {
         name: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["label"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["label"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "issues/delete-label": {
     parameters: {
@@ -24257,7 +26130,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "issues/update-label": {
@@ -24270,10 +26144,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["label"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["label"];
       };
     };
     requestBody: {
@@ -24299,10 +26172,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["language"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["language"];
       };
     };
   };
@@ -24320,10 +26192,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["license-content"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["license-content"];
       };
     };
   };
@@ -24334,34 +26205,42 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Successful Response (The resulting merge commit) */
-      201: {
-        content: {
-          "application/json": components["schemas"]["commit"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      /** response */
-      404: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Successful Response (The resulting merge commit) */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["commit"];
           };
-        };
-      };
-      /** Merge conflict response */
-      409: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** response */
+          status: 404;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
+        }
+      | {
+          /** Merge conflict response */
+          status: 409;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24394,16 +26273,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["milestone"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["milestone"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "issues/create-milestone": {
     parameters: {
@@ -24412,19 +26294,25 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["milestone"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["milestone"];
-        };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24449,15 +26337,18 @@ export interface operations {
         milestone_number: components["parameters"]["milestone_number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["milestone"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["milestone"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   "issues/delete-milestone": {
     parameters: {
@@ -24468,11 +26359,16 @@ export interface operations {
         milestone_number: components["parameters"]["milestone_number"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "issues/update-milestone": {
     parameters: {
@@ -24485,10 +26381,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["milestone"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["milestone"];
       };
     };
     requestBody: {
@@ -24523,11 +26418,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["label"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["label"][];
       };
     };
   };
@@ -24555,11 +26449,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["thread"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["thread"][];
       };
     };
   };
@@ -24573,7 +26466,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      202: unknown;
+      status: 202;
+      content: unknown;
     };
     requestBody: {
       content: {
@@ -24591,15 +26485,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["page"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["page"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Updates information for a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages). */
   "repos/update-information-about-pages-site": {
@@ -24609,12 +26506,20 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      400: components["responses"]["bad_request"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -24641,17 +26546,26 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["page"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["page"];
+          };
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      409: components["responses"]["conflict"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24673,13 +26587,24 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   "repos/list-pages-builds": {
     parameters: {
@@ -24696,11 +26621,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["page-build"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["page-build"][];
       };
     };
   };
@@ -24718,10 +26642,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["page-build-status"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["page-build-status"];
       };
     };
   };
@@ -24734,10 +26657,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["page-build"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["page-build"];
       };
     };
   };
@@ -24751,10 +26673,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["page-build"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["page-build"];
       };
     };
   };
@@ -24774,20 +26695,35 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["project"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["project"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed_simple"];
-    };
   };
   /** Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned. */
   "projects/create-for-repo": {
@@ -24797,19 +26733,34 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["project"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["project"];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 410;
+          content: components["responses"]["gone"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      410: components["responses"]["gone"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24845,17 +26796,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["pull-request-simple"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -24873,19 +26830,25 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["pull-request"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["pull-request"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -24928,11 +26891,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["pull-request-review-comment"][];
       };
     };
   };
@@ -24946,15 +26908,18 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Deletes a review comment. */
   "pulls/delete-review-comment": {
@@ -24966,11 +26931,16 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Enables you to edit a review comment. */
   "pulls/update-review-comment": {
@@ -24984,10 +26954,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["pull-request-review-comment"];
       };
     };
     requestBody: {
@@ -25017,17 +26986,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["reaction"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /** Create a reaction to a [pull request review comment](https://docs.github.com/rest/reference/pulls#comments). A response with a `Status: 200 OK` means that you already added the reaction type to this pull request review comment. */
   "reactions/create-for-pull-request-review-comment": {
@@ -25039,22 +27014,29 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** Reaction exists */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
+    responses:
+      | {
+          /** Reaction exists */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          /** Reaction created */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["reaction"];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      /** Reaction created */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25081,7 +27063,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -25109,17 +27092,26 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request"];
+    responses:
+      | {
+          /** Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["internal_error"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-      500: components["responses"]["internal_error"];
-    };
   };
   /**
    * Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -25134,16 +27126,22 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25184,11 +27182,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["pull-request-review-comment"][];
       };
     };
   };
@@ -25209,19 +27206,25 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["pull-request-review-comment"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25261,18 +27264,21 @@ export interface operations {
         comment_id: components["parameters"]["comment_id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["pull-request-review-comment"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-        content: {
-          "application/json": components["schemas"]["pull-request-review-comment"];
-        };
-      };
-      404: components["responses"]["not_found"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25299,11 +27305,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["commit"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["commit"][];
       };
     };
   };
@@ -25322,17 +27327,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["diff-entry"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["diff-entry"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["internal_error"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-      500: components["responses"]["internal_error"];
-    };
   };
   "pulls/check-if-merged": {
     parameters: {
@@ -25342,12 +27353,17 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** Response if pull request has been merged */
-      204: never;
-      /** Response if pull request has not been merged */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if pull request has been merged */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if pull request has not been merged */
+          status: 404;
+          content: unknown;
+        };
   };
   /** This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-abuse-rate-limits)" for details. */
   "pulls/merge": {
@@ -25358,35 +27374,46 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** Response if merge was successful */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-merge-result"];
-        };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      /** Response if merge cannot be performed */
-      405: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Response if merge was successful */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-merge-result"];
           };
-        };
-      };
-      /** Response if sha was provided and pull request head did not match */
-      409: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          /** Response if merge cannot be performed */
+          status: 405;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
+        }
+      | {
+          /** Response if sha was provided and pull request head did not match */
+          status: 409;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25418,11 +27445,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-review-request"];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["pull-request-review-request"];
       };
     };
   };
@@ -25435,17 +27461,23 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["pull-request-simple"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["pull-request-simple"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if user is not a collaborator */
+          status: 422;
+          content: unknown;
         };
-      };
-      403: components["responses"]["forbidden"];
-      /** Response if user is not a collaborator */
-      422: unknown;
-    };
     requestBody: {
       content: {
         "application/json": (Partial<{ [key: string]: any }> & Partial<{ [key: string]: any }>) & {
@@ -25465,11 +27497,16 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      200: unknown;
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: unknown;
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -25498,11 +27535,10 @@ export interface operations {
     };
     responses: {
       /** The list of reviews returns in chronological order. */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["pull-request-review"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["pull-request-review"][];
       };
     };
   };
@@ -25523,16 +27559,22 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25569,15 +27611,18 @@ export interface operations {
         review_id: components["parameters"]["review_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Update the review summary comment with new text. */
   "pulls/update-review": {
@@ -25590,15 +27635,18 @@ export interface operations {
         review_id: components["parameters"]["review_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25618,16 +27666,22 @@ export interface operations {
         review_id: components["parameters"]["review_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
   };
   /** List comments for a specific pull request review. */
   "pulls/list-comments-for-review": {
@@ -25646,16 +27700,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["review-comment"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["review-comment"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.com/rest/reference/repos#branches), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews. */
   "pulls/dismiss-review": {
@@ -25668,16 +27725,22 @@ export interface operations {
         review_id: components["parameters"]["review_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25698,17 +27761,26 @@ export interface operations {
         review_id: components["parameters"]["review_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["pull-request-review"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["pull-request-review"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25729,20 +27801,29 @@ export interface operations {
         pull_number: components["parameters"]["pull-number"];
       };
     };
-    responses: {
-      /** response */
-      202: {
-        content: {
-          "application/json": {
-            message?: string;
-            url?: string;
+    responses:
+      | {
+          /** response */
+          status: 202;
+          content: {
+            "application/json": {
+              message?: string;
+              url?: string;
+            };
           };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25768,16 +27849,22 @@ export interface operations {
         ref?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["content-file"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["content-file"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/reference/repos#list-repository-tags).
@@ -25797,16 +27884,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["release"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["release"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Users with push access to the repository can create a release.
@@ -25820,18 +27910,21 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["release"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["release"];
-        };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -25861,17 +27954,26 @@ export interface operations {
         asset_id: components["parameters"]["asset_id"];
       };
     };
-    responses: {
-      /** To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release-asset"];
+    responses:
+      | {
+          /** To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["release-asset"];
+          };
+        }
+      | {
+          status: 302;
+          content: components["responses"]["found"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      302: components["responses"]["found"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "repos/delete-release-asset": {
     parameters: {
@@ -25884,7 +27986,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Users with push access to the repository can edit a release asset. */
@@ -25899,10 +28002,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release-asset"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["release-asset"];
       };
     };
     requestBody: {
@@ -25931,10 +28033,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["release"];
       };
     };
   };
@@ -25948,15 +28049,18 @@ export interface operations {
         tag: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["release"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia). */
   "repos/get-release": {
@@ -25968,15 +28072,18 @@ export interface operations {
         release_id: components["parameters"]["release_id"];
       };
     };
-    responses: {
-      /** **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia). */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release"];
+    responses:
+      | {
+          /** **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia). */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["release"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** Users with push access to the repository can delete a release. */
   "repos/delete-release": {
@@ -25990,7 +28097,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Users with push access to the repository can edit a release. */
@@ -26005,10 +28113,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["release"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["release"];
       };
     };
     requestBody: {
@@ -26047,11 +28154,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["release-asset"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["release-asset"][];
       };
     };
   };
@@ -26090,10 +28196,9 @@ export interface operations {
     };
     responses: {
       /** Response for successful upload */
-      201: {
-        content: {
-          "application/json": components["schemas"]["release-asset"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["release-asset"];
       };
     };
     requestBody: {
@@ -26122,17 +28227,23 @@ export interface operations {
         per_page?: components["parameters"]["per_page"];
       };
     };
-    responses: {
-      /** Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["secret-scanning-alert"][];
+    responses:
+      | {
+          /** Response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["secret-scanning-alert"][];
+          };
+        }
+      | {
+          /** Repository is public or secret scanning is disabled for the repository */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      /** Repository is public or secret scanning is disabled for the repository */
-      404: unknown;
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Gets a single secret scanning alert detected in a private repository. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
@@ -26148,17 +28259,23 @@ export interface operations {
         alert_number: components["parameters"]["alert_number"];
       };
     };
-    responses: {
-      /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["secret-scanning-alert"];
+    responses:
+      | {
+          /** Default response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["secret-scanning-alert"];
+          };
+        }
+      | {
+          /** Repository is public, or secret scanning is disabled for the repository, or the resource is not found */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      /** Repository is public, or secret scanning is disabled for the repository, or the resource is not found */
-      404: unknown;
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Updates the status of a secret scanning alert in a private repository. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
@@ -26174,19 +28291,28 @@ export interface operations {
         alert_number: components["parameters"]["alert_number"];
       };
     };
-    responses: {
-      /** Default response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["secret-scanning-alert"];
+    responses:
+      | {
+          /** Default response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["secret-scanning-alert"];
+          };
+        }
+      | {
+          /** Repository is public, or secret scanning is disabled for the repository, or the resource is not found */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          /** State does not match the resolution */
+          status: 422;
+          content: unknown;
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      /** Repository is public, or secret scanning is disabled for the repository, or the resource is not found */
-      404: unknown;
-      /** State does not match the resolution */
-      422: unknown;
-      503: components["responses"]["service_unavailable"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -26214,17 +28340,20 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-          "application/vnd.github.v3.star+json": components["schemas"]["stargazer"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+            "application/vnd.github.v3.star+json": components["schemas"]["stargazer"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Returns a weekly aggregate of the number of additions and deletions pushed to a repository. */
   "repos/get-code-frequency-stats": {
@@ -26236,10 +28365,9 @@ export interface operations {
     };
     responses: {
       /** Returns a weekly aggregate of the number of additions and deletions pushed to a repository. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-frequency-stat"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["code-frequency-stat"][];
       };
     };
   };
@@ -26253,10 +28381,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["commit-activity"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["commit-activity"][];
       };
     };
   };
@@ -26282,10 +28409,9 @@ export interface operations {
        * *   `d` - Number of deletions
        * *   `c` - Number of commits
        */
-      200: {
-        content: {
-          "application/json": components["schemas"]["contributor-activity"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["contributor-activity"][];
       };
     };
   };
@@ -26301,15 +28427,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** The array order is oldest week (index 0) to most recent week. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["participation-stats"];
+    responses:
+      | {
+          /** The array order is oldest week (index 0) to most recent week. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["participation-stats"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Each array contains the day number, hour number, and number of commits:
@@ -26329,10 +28458,9 @@ export interface operations {
     };
     responses: {
       /** For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["code-frequency-stat"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["code-frequency-stat"][];
       };
     };
   };
@@ -26351,13 +28479,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        headers: {
-          Location?: string;
-        };
-        content: {
-          "application/json": components["schemas"]["status"];
-        };
+      status: 201;
+      headers: {
+        Location?: string;
+      };
+      content: {
+        "application/json": components["schemas"]["status"];
       };
     };
     requestBody: {
@@ -26395,11 +28522,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -26410,17 +28536,23 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Response if you subscribe to the repository */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository-subscription"];
+    responses:
+      | {
+          /** Response if you subscribe to the repository */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["repository-subscription"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if you don't subscribe to the repository */
+          status: 404;
+          content: unknown;
         };
-      };
-      403: components["responses"]["forbidden"];
-      /** Response if you don't subscribe to the repository */
-      404: unknown;
-    };
   };
   /** If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/rest/reference/activity#delete-a-repository-subscription) completely. */
   "activity/set-repo-subscription": {
@@ -26432,10 +28564,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository-subscription"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["repository-subscription"];
       };
     };
     requestBody: {
@@ -26459,7 +28590,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   "repos/list-tags": {
@@ -26477,11 +28609,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["tag"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["tag"][];
       };
     };
   };
@@ -26501,7 +28632,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      302: never;
+      status: 302;
+      content: never;
     };
   };
   "repos/list-teams": {
@@ -26519,11 +28651,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team"][];
       };
     };
   };
@@ -26534,16 +28665,22 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topic"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topic"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "repos/replace-all-topics": {
     parameters: {
@@ -26552,17 +28689,26 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topic"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topic"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -26584,15 +28730,18 @@ export interface operations {
         per?: components["parameters"]["per"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["clone-traffic"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["clone-traffic"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Get the top 10 popular contents over the last 14 days. */
   "repos/get-top-paths": {
@@ -26602,15 +28751,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["content-traffic"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["content-traffic"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Get the top 10 referrers over the last 14 days. */
   "repos/get-top-referrers": {
@@ -26620,15 +28772,18 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["referrer-traffic"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["referrer-traffic"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday. */
   "repos/get-views": {
@@ -26642,15 +28797,18 @@ export interface operations {
         per?: components["parameters"]["per"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["view-traffic"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["view-traffic"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      403: components["responses"]["forbidden"];
-    };
   };
   /** A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://help.github.com/articles/about-repository-transfers/). */
   "repos/transfer": {
@@ -26662,10 +28820,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      202: {
-        content: {
-          "application/json": components["schemas"]["repository"];
-        };
+      status: 202;
+      content: {
+        "application/json": components["schemas"]["repository"];
       };
     };
     requestBody: {
@@ -26687,12 +28844,17 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Response if repository is enabled with vulnerability alerts */
-      204: never;
-      /** Response if repository is not enabled with vulnerability alerts */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if repository is enabled with vulnerability alerts */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if repository is not enabled with vulnerability alerts */
+          status: 404;
+          content: unknown;
+        };
   };
   /** Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)". */
   "repos/enable-vulnerability-alerts": {
@@ -26704,7 +28866,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** Disables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)". */
@@ -26717,7 +28880,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -26736,7 +28900,8 @@ export interface operations {
     };
     responses: {
       /** response */
-      302: never;
+      status: 302;
+      content: never;
     };
   };
   /**
@@ -26758,13 +28923,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        headers: {
-          Location?: string;
-        };
-        content: {
-          "application/json": components["schemas"]["repository"];
-        };
+      status: 201;
+      headers: {
+        Location?: string;
+      };
+      content: {
+        "application/json": components["schemas"]["repository"];
       };
     };
     requestBody: {
@@ -26796,19 +28960,25 @@ export interface operations {
         since?: components["parameters"]["since-repo"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {
-          Link?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {
+            Link?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Lists all secrets available in an environment without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint. */
   "actions/list-environment-secrets": {
@@ -26827,13 +28997,12 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            secrets: components["schemas"]["actions-secret"][];
-          };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": {
+          total_count: number;
+          secrets: components["schemas"]["actions-secret"][];
         };
       };
     };
@@ -26849,10 +29018,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-public-key"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-public-key"];
       };
     };
   };
@@ -26869,10 +29037,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-secret"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-secret"];
       };
     };
   };
@@ -26963,12 +29130,17 @@ export interface operations {
         secret_name: components["parameters"]["secret_name"];
       };
     };
-    responses: {
-      /** Response when creating a secret */
-      201: unknown;
-      /** Response when updating a secret */
-      204: never;
-    };
+    responses:
+      | {
+          /** Response when creating a secret */
+          status: 201;
+          content: unknown;
+        }
+      | {
+          /** Response when updating a secret */
+          status: 204;
+          content: never;
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -26993,7 +29165,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /** **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change. */
@@ -27012,10 +29185,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-group-list-enterprise"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-group-list-enterprise"];
       };
     };
   };
@@ -27033,10 +29205,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-group"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-group"];
       };
     };
     requestBody: {
@@ -27066,10 +29237,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-group"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-group"];
       };
     };
   };
@@ -27089,10 +29259,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-group"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-group"];
       };
     };
     requestBody: {
@@ -27122,7 +29291,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -27141,10 +29311,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-group"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-group"];
       };
     };
     requestBody: {
@@ -27193,10 +29362,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-user-list-enterprise"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-user-list-enterprise"];
       };
     };
   };
@@ -27216,10 +29384,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-user"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-user"];
       };
     };
     requestBody: {
@@ -27264,10 +29431,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-user"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-user"];
       };
     };
   };
@@ -27291,10 +29457,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-user"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-user"];
       };
     };
     requestBody: {
@@ -27339,7 +29504,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -27373,10 +29539,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scim-enterprise-user"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["scim-enterprise-user"];
       };
     };
     requestBody: {
@@ -27430,18 +29595,30 @@ export interface operations {
         filter?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/scim+json": components["schemas"]["scim-user-list"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/scim+json": components["schemas"]["scim-user-list"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 400;
+          content: components["responses"]["scim_bad_request"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      400: components["responses"]["scim_bad_request"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-    };
   };
   /** Provision organization membership for a user, and send an activation email to the email address. */
   "scim/provision-and-invite-user": {
@@ -27450,20 +29627,38 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/scim+json": components["schemas"]["scim-user"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/scim+json": components["schemas"]["scim-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 400;
+          content: components["responses"]["scim_bad_request"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["scim_conflict"];
+        }
+      | {
+          status: 500;
+          content: components["responses"]["scim_internal_error"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      400: components["responses"]["scim_bad_request"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-      409: components["responses"]["scim_conflict"];
-      500: components["responses"]["scim_internal_error"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -27498,17 +29693,26 @@ export interface operations {
         scim_user_id: components["parameters"]["scim_user_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/scim+json": components["schemas"]["scim-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/scim+json": components["schemas"]["scim-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-    };
   };
   /**
    * Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](https://docs.github.com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
@@ -27525,17 +29729,26 @@ export interface operations {
         scim_user_id: components["parameters"]["scim_user_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/scim+json": components["schemas"]["scim-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/scim+json": components["schemas"]["scim-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -27570,13 +29783,24 @@ export interface operations {
         scim_user_id: components["parameters"]["scim_user_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
+        };
   };
   /**
    * Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
@@ -27604,24 +29828,37 @@ export interface operations {
         scim_user_id: components["parameters"]["scim_user_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/scim+json": components["schemas"]["scim-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/scim+json": components["schemas"]["scim-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 400;
+          content: components["responses"]["scim_bad_request"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["scim_forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["scim_not_found"];
+        }
+      | {
+          /** Too many requests */
+          status: 429;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-      304: components["responses"]["not_modified"];
-      400: components["responses"]["scim_bad_request"];
-      403: components["responses"]["scim_forbidden"];
-      404: components["responses"]["scim_not_found"];
-      /** Too many requests */
-      429: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -27683,22 +29920,34 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["code-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["code-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Find commits via various criteria on the default branch (usually `master`). This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
@@ -27725,20 +29974,26 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["commit-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["commit-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
@@ -27780,22 +30035,34 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["issue-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["issue-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Find labels in a repository with names or descriptions that match search keywords. Returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
@@ -27821,22 +30088,34 @@ export interface operations {
         order?: components["parameters"]["order"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["label-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["label-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Find repositories via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
@@ -27868,21 +30147,30 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["repo-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["repo-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /**
    * Find topics via various criteria. Results are sorted by best match. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination). See "[Searching topics](https://help.github.com/articles/searching-topics/)" for a detailed list of qualifiers.
@@ -27902,20 +30190,26 @@ export interface operations {
         q: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["topic-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["topic-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
@@ -27943,21 +30237,30 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": {
-            total_count: number;
-            incomplete_results: boolean;
-            items: components["schemas"]["user-search-result-item"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": {
+              total_count: number;
+              incomplete_results: boolean;
+              items: components["schemas"]["user-search-result-item"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        }
+      | {
+          status: 503;
+          content: components["responses"]["service_unavailable"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      422: components["responses"]["validation_failed"];
-      503: components["responses"]["service_unavailable"];
-    };
   };
   /** **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/rest/reference/teams#get-a-team-by-name) endpoint. */
   "teams/get-legacy": {
@@ -27966,15 +30269,18 @@ export interface operations {
         team_id: components["parameters"]["team-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-full"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-full"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://docs.github.com/rest/reference/teams#delete-a-team) endpoint.
@@ -27989,12 +30295,20 @@ export interface operations {
         team_id: components["parameters"]["team-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://docs.github.com/rest/reference/teams#update-a-team) endpoint.
@@ -28009,17 +30323,26 @@ export interface operations {
         team_id: components["parameters"]["team-id"];
       };
     };
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-full"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["team-full"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -28070,11 +30393,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-discussion"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team-discussion"][];
       };
     };
   };
@@ -28093,10 +30415,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
     requestBody: {
@@ -28126,10 +30447,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
   };
@@ -28147,7 +30467,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -28164,10 +30485,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion"];
       };
     };
     requestBody: {
@@ -28203,11 +30523,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"][];
       };
     };
   };
@@ -28227,10 +30546,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
     requestBody: {
@@ -28257,10 +30575,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
   };
@@ -28279,7 +30596,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -28297,10 +30615,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-discussion-comment"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["team-discussion-comment"];
       };
     };
     requestBody: {
@@ -28335,11 +30652,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["reaction"][];
       };
     };
   };
@@ -28358,10 +30674,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["reaction"];
       };
     };
     requestBody: {
@@ -28395,11 +30710,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["reaction"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["reaction"][];
       };
     };
   };
@@ -28417,10 +30731,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["reaction"];
-        };
+      status: 201;
+      content: {
+        "application/json": components["schemas"]["reaction"];
       };
     };
     requestBody: {
@@ -28451,11 +30764,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-invitation"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["organization-invitation"][];
       };
     };
   };
@@ -28483,16 +30795,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * The "Get team member" endpoint (described below) is deprecated.
@@ -28508,12 +30823,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if user is a member */
-      204: never;
-      /** Response if user is not a member */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if user is a member */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if user is not a member */
+          status: 404;
+          content: unknown;
+        };
   };
   /**
    * The "Add team member" endpoint (described below) is deprecated.
@@ -28535,27 +30855,36 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-      /** Response if team synchronization is set up */
-      404: unknown;
-      /** response */
-      422: {
-        content: {
-          "application/json": {
-            message?: string;
-            errors?: {
-              code?: string;
-              field?: string;
-              resource?: string;
-            }[];
-            documentation_url?: string;
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if team synchronization is set up */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          /** response */
+          status: 422;
+          content: {
+            "application/json": {
+              message?: string;
+              errors?: {
+                code?: string;
+                field?: string;
+                resource?: string;
+              }[];
+              documentation_url?: string;
+            };
           };
         };
-      };
-    };
   };
   /**
    * The "Remove team member" endpoint (described below) is deprecated.
@@ -28575,12 +30904,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if team synchronization is setup */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if team synchronization is setup */
+          status: 404;
+          content: unknown;
+        };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get team membership for a user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint.
@@ -28598,15 +30932,18 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-membership"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team membership for a user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint.
@@ -28628,31 +30965,38 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-membership"];
-        };
-      };
-      /** Response if team synchronization is set up */
-      403: unknown;
-      404: components["responses"]["not_found"];
-      /** Response if you attempt to add an organization to a team */
-      422: {
-        content: {
-          "application/json": {
-            message?: string;
-            errors?: {
-              code?: string;
-              field?: string;
-              resource?: string;
-            }[];
-            documentation_url?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-membership"];
+          };
+        }
+      | {
+          /** Response if team synchronization is set up */
+          status: 403;
+          content: unknown;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          /** Response if you attempt to add an organization to a team */
+          status: 422;
+          content: {
+            "application/json": {
+              message?: string;
+              errors?: {
+                code?: string;
+                field?: string;
+                resource?: string;
+              }[];
+              documentation_url?: string;
+            };
           };
         };
-      };
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -28682,12 +31026,17 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if team synchronization is set up */
-      403: unknown;
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if team synchronization is set up */
+          status: 403;
+          content: unknown;
+        };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team projects`](https://docs.github.com/rest/reference/teams#list-team-projects) endpoint.
@@ -28706,17 +31055,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-project"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["team-project"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project) endpoint.
@@ -28730,17 +31085,23 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["team-project"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["team-project"];
+          };
+        }
+      | {
+          /** Response if project is not managed by this team */
+          status: 404;
+          content: unknown;
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      /** Response if project is not managed by this team */
-      404: unknown;
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team project permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions) endpoint.
@@ -28754,22 +31115,34 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      /** Response if the project is not owned by the organization */
-      403: {
-        content: {
-          "application/json": {
-            message?: string;
-            documentation_url?: string;
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if the project is not owned by the organization */
+          status: 403;
+          content: {
+            "application/json": {
+              message?: string;
+              documentation_url?: string;
+            };
           };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -28797,13 +31170,24 @@ export interface operations {
         project_id: components["parameters"]["project-id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   /** **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [List team repositories](https://docs.github.com/rest/reference/teams#list-team-repositories) endpoint. */
   "teams/list-repos-legacy": {
@@ -28818,16 +31202,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Note**: Repositories inherited through a parent team will also be checked.
@@ -28844,18 +31231,24 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Alternative response with extra repository information */
-      200: {
-        content: {
-          "application/vnd.github.v3.repository+json": components["schemas"]["team-repository"];
+    responses:
+      | {
+          /** Alternative response with extra repository information */
+          status: 200;
+          content: {
+            "application/vnd.github.v3.repository+json": components["schemas"]["team-repository"];
+          };
+        }
+      | {
+          /** Response if repository is managed by this team */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if repository is not managed by this team */
+          status: 404;
+          content: unknown;
         };
-      };
-      /** Response if repository is managed by this team */
-      204: never;
-      /** Response if repository is not managed by this team */
-      404: unknown;
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Add or update team repository permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-repository-permissions)" endpoint.
@@ -28872,12 +31265,20 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json": {
@@ -28909,7 +31310,8 @@ export interface operations {
     };
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -28925,16 +31327,22 @@ export interface operations {
         team_id: components["parameters"]["team-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["group-mapping"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["group-mapping"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections) endpoint.
@@ -28949,16 +31357,22 @@ export interface operations {
         team_id: components["parameters"]["team-id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["group-mapping"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["group-mapping"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -28992,18 +31406,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** Response if child teams exist */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team"][];
+    responses:
+      | {
+          /** Response if child teams exist */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["team"][];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * If the authenticated user is authenticated through basic authentication or OAuth with the `user` scope, then the response lists public and private profile information.
@@ -29012,34 +31435,58 @@ export interface operations {
    */
   "users/get-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["private-user"] | components["schemas"]["public-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["private-user"] | components["schemas"]["public-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API. */
   "users/update-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["private-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["private-user"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29066,19 +31513,34 @@ export interface operations {
   /** List the users you've blocked on your personal account. */
   "users/list-blocked-by-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   "users/check-blocked": {
     parameters: {
@@ -29086,19 +31548,31 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** If the user is blocked: */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      /** If the user is not blocked: */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
+    responses:
+      | {
+          /** If the user is blocked: */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** If the user is not blocked: */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-    };
   };
   "users/block": {
     parameters: {
@@ -29106,15 +31580,32 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   "users/unblock": {
     parameters: {
@@ -29122,31 +31613,60 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Sets the visibility for your primary email addresses. */
   "users/set-primary-email-visibility-for-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["email"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["email"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29168,36 +31688,63 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["email"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["email"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** This endpoint is accessible with the `user` scope. */
   "users/add-email-for-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["email"][];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["email"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json":
@@ -29213,15 +31760,32 @@ export interface operations {
   /** This endpoint is accessible with the `user` scope. */
   "users/delete-email-for-authenticated": {
     parameters: {};
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
     requestBody: {
       content: {
         "application/json":
@@ -29244,18 +31808,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Lists the people who the authenticated user follows. */
   "users/list-followed-by-authenticated": {
@@ -29267,18 +31840,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   "users/check-person-is-followed-by-authenticated": {
     parameters: {
@@ -29286,19 +31868,31 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Response if the person is followed by the authenticated user */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      /** Response if the person is not followed by the authenticated user */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
+    responses:
+      | {
+          /** Response if the person is followed by the authenticated user */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if the person is not followed by the authenticated user */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-    };
   };
   /**
    * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
@@ -29311,14 +31905,28 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope. */
   "users/unfollow": {
@@ -29327,14 +31935,28 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/list-gpg-keys-for-authenticated": {
@@ -29346,36 +31968,63 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["gpg-key"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["gpg-key"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/create-gpg-key-for-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["gpg-key"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["gpg-key"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29393,18 +32042,30 @@ export interface operations {
         gpg_key_id: components["parameters"]["gpg_key_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["gpg-key"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["gpg-key"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Removes a GPG key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/delete-gpg-key-for-authenticated": {
@@ -29414,15 +32075,32 @@ export interface operations {
         gpg_key_id: components["parameters"]["gpg_key_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
+        };
   };
   /**
    * Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
@@ -29442,22 +32120,34 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** You can find the permissions for the installation under the `permissions` key. */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            installations: components["schemas"]["installation"][];
+    responses:
+      | {
+          /** You can find the permissions for the installation under the `permissions` key. */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": {
+              total_count: number;
+              installations: components["schemas"]["installation"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      415: components["responses"]["preview_header_missing"];
-    };
   };
   /**
    * List repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access for an installation.
@@ -29481,22 +32171,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** The access the user has to each repository is included in the hash under the `permissions` key. */
-      200: {
-        headers: {};
-        content: {
-          "application/json": {
-            total_count: number;
-            repository_selection?: string;
-            repositories: components["schemas"]["repository"][];
+    responses:
+      | {
+          /** The access the user has to each repository is included in the hash under the `permissions` key. */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": {
+              total_count: number;
+              repository_selection?: string;
+              repositories: components["schemas"]["repository"][];
+            };
           };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Add a single repository to an installation. The authenticated user must have admin access to the repository.
@@ -29511,13 +32210,24 @@ export interface operations {
         repository_id: components["parameters"]["repository_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Remove a single repository from an installation. The authenticated user must have admin access to the repository.
@@ -29532,36 +32242,49 @@ export interface operations {
         repository_id: components["parameters"]["repository_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Shows which type of GitHub user can interact with your public repositories and when the restriction expires. If there are no restrictions, you will see an empty response. */
   "interactions/get-restrictions-for-authenticated-user": {
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["interaction-limit-response"];
       };
     };
   };
   /** Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user. */
   "interactions/set-restrictions-for-authenticated-user": {
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["interaction-limit-response"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["interaction-limit-response"];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": components["schemas"]["interaction-limit"];
@@ -29572,7 +32295,8 @@ export interface operations {
   "interactions/remove-restrictions-for-authenticated-user": {
     responses: {
       /** Empty response */
-      204: never;
+      status: 204;
+      content: never;
     };
   };
   /**
@@ -29611,17 +32335,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["issue"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["issue"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/list-public-ssh-keys-for-authenticated": {
@@ -29633,36 +32363,63 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["key"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["key"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Adds a public SSH key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/create-public-ssh-key-for-authenticated": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["key"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["key"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29682,18 +32439,30 @@ export interface operations {
         key_id: components["parameters"]["key_id"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["key"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["key"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Removes a public SSH key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). */
   "users/delete-public-ssh-key-for-authenticated": {
@@ -29703,14 +32472,28 @@ export interface operations {
         key_id: components["parameters"]["key_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/). */
   "apps/list-subscriptions-for-authenticated-user": {
@@ -29722,18 +32505,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["user-marketplace-purchase"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["user-marketplace-purchase"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      404: components["responses"]["not_found"];
-    };
   };
   /** Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/). */
   "apps/list-subscriptions-for-authenticated-user-stubbed": {
@@ -29745,17 +32537,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["user-marketplace-purchase"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["user-marketplace-purchase"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-    };
   };
   "orgs/list-memberships-for-authenticated-user": {
     parameters: {
@@ -29768,19 +32566,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["org-membership"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["org-membership"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   "orgs/get-membership-for-authenticated-user": {
     parameters: {
@@ -29788,16 +32598,22 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-membership"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "orgs/update-membership-for-authenticated-user": {
     parameters: {
@@ -29805,17 +32621,26 @@ export interface operations {
         org: components["parameters"]["org"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["org-membership"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["org-membership"];
+          };
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29835,34 +32660,55 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["migration"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["migration"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** Initiates the generation of a user migration archive. */
   "migrations/start-for-authenticated-user": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["migration"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["migration"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -29897,18 +32743,30 @@ export interface operations {
         exclude?: string[];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["migration"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["migration"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources your repository uses, the migration archive can contain JSON files with data for these objects:
@@ -29940,13 +32798,24 @@ export interface operations {
         migration_id: components["parameters"]["migration_id"];
       };
     };
-    responses: {
-      /** response */
-      302: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
+    responses:
+      | {
+          /** response */
+          status: 302;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        };
   };
   /** Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/rest/reference/migrations#list-user-migrations) and [Get a user migration status](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted. */
   "migrations/delete-archive-for-authenticated-user": {
@@ -29956,14 +32825,28 @@ export interface operations {
         migration_id: components["parameters"]["migration_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/rest/reference/migrations#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/rest/reference/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked. */
   "migrations/unlock-repo-for-authenticated-user": {
@@ -29975,14 +32858,28 @@ export interface operations {
         repo_name: components["parameters"]["repo_name"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists all the repositories for this user migration. */
   "migrations/list-repos-for-user": {
@@ -29998,16 +32895,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * List organizations for the authenticated user.
@@ -30025,18 +32925,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-simple"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["organization-simple"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /**
    * Gets a specific package for a package owned by the authenticated user.
@@ -30055,10 +32964,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package"];
       };
     };
   };
@@ -30077,13 +32985,24 @@ export interface operations {
         package_name: components["parameters"]["package_name"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Restores a package owned by the authenticated user.
@@ -30103,13 +33022,24 @@ export interface operations {
         package_name: components["parameters"]["package_name"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Returns all package versions for a package owned by the authenticated user.
@@ -30126,17 +33056,26 @@ export interface operations {
         package_name: components["parameters"]["package_name"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["package-version"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Gets a specific package version for a package owned by the authenticated user.
@@ -30157,10 +33096,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package-version"];
       };
     };
   };
@@ -30181,13 +33119,24 @@ export interface operations {
         package_version_id: components["parameters"]["package_version_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /**
    * Restores a package version owned by the authenticated user.
@@ -30209,29 +33158,55 @@ export interface operations {
         package_version_id: components["parameters"]["package_version_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "projects/create-for-authenticated-user": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        content: {
-          "application/json": components["schemas"]["project"];
+    responses:
+      | {
+          /** response */
+          status: 201;
+          content: {
+            "application/json": components["schemas"]["project"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed_simple"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed_simple"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -30253,19 +33228,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["email"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["email"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
@@ -30304,18 +33291,30 @@ export interface operations {
         before?: components["parameters"]["before"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["repository"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Creates a new repository for the authenticated user.
@@ -30329,23 +33328,41 @@ export interface operations {
    */
   "repos/create-for-authenticated-user": {
     parameters: {};
-    responses: {
-      /** response */
-      201: {
-        headers: {
-          Location?: string;
+    responses:
+      | {
+          /** response */
+          status: 201;
+          headers: {
+            Location?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["repository"];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 400;
+          content: components["responses"]["bad_request"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-        content: {
-          "application/json": components["schemas"]["repository"];
-        };
-      };
-      304: components["responses"]["not_modified"];
-      400: components["responses"]["bad_request"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
     requestBody: {
       content: {
         "application/json": {
@@ -30397,19 +33414,31 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["repository-invitation"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["repository-invitation"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   "repos/decline-invitation": {
     parameters: {
@@ -30418,14 +33447,28 @@ export interface operations {
         invitation_id: components["parameters"]["invitation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        };
   };
   "repos/accept-invitation": {
     parameters: {
@@ -30434,14 +33477,28 @@ export interface operations {
         invitation_id: components["parameters"]["invitation_id"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-      409: components["responses"]["conflict"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 409;
+          content: components["responses"]["conflict"];
+        };
   };
   /**
    * Lists repositories the authenticated user has starred.
@@ -30461,19 +33518,28 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["repository"][];
-          "application/vnd.github.v3.star+json": components["schemas"]["starred-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["repository"][];
+            "application/vnd.github.v3.star+json": components["schemas"]["starred-repository"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   "activity/check-repo-is-starred-by-authenticated-user": {
     parameters: {
@@ -30482,19 +33548,31 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Response if this repository is starred by you */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      /** Response if this repository is not starred by you */
-      404: {
-        content: {
-          "application/json": components["schemas"]["basic-error"];
+    responses:
+      | {
+          /** Response if this repository is starred by you */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          /** Response if this repository is not starred by you */
+          status: 404;
+          content: {
+            "application/json": components["schemas"]["basic-error"];
+          };
         };
-      };
-    };
   };
   /** Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)." */
   "activity/star-repo-for-authenticated-user": {
@@ -30504,14 +33582,28 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   "activity/unstar-repo-for-authenticated-user": {
     parameters: {
@@ -30520,14 +33612,28 @@ export interface operations {
         repo: components["parameters"]["repo"];
       };
     };
-    responses: {
-      /** Empty response */
-      204: never;
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
+    responses:
+      | {
+          /** Empty response */
+          status: 204;
+          content: never;
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        };
   };
   /** Lists repositories the authenticated user is watching. */
   "activity/list-watched-repos-for-authenticated-user": {
@@ -30539,18 +33645,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["minimal-repository"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-    };
   };
   /** List all of the teams across all of the organizations to which the authenticated user belongs. This method requires `user`, `repo`, or `read:org` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via [OAuth](https://docs.github.com/apps/building-oauth-apps/). */
   "teams/list-for-authenticated-user": {
@@ -30562,18 +33677,27 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["team-full"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["team-full"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      304: components["responses"]["not_modified"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
@@ -30589,18 +33713,21 @@ export interface operations {
         per_page?: components["parameters"]["per_page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {
-          Link?: string;
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {
+            Link?: string;
+          };
+          content: {
+            "application/json": components["schemas"]["simple-user"][];
+          };
+        }
+      | {
+          status: 304;
+          content: components["responses"]["not_modified"];
         };
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
-      };
-      304: components["responses"]["not_modified"];
-    };
   };
   /**
    * Provides publicly available information about someone with a GitHub account.
@@ -30617,15 +33744,18 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["private-user"] | components["schemas"]["public-user"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["private-user"] | components["schemas"]["public-user"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      404: components["responses"]["not_found"];
-    };
   };
   /** If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events. */
   "activity/list-events-for-authenticated-user": {
@@ -30642,10 +33772,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -30665,10 +33794,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -30686,10 +33814,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -30708,11 +33835,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -30731,11 +33857,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["simple-user"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["simple-user"][];
       };
     };
   };
@@ -30746,12 +33871,17 @@ export interface operations {
         target_user: string;
       };
     };
-    responses: {
-      /** Response if the user follows the target user */
-      204: never;
-      /** Response if the user does not follow the target user */
-      404: unknown;
-    };
+    responses:
+      | {
+          /** Response if the user follows the target user */
+          status: 204;
+          content: never;
+        }
+      | {
+          /** Response if the user does not follow the target user */
+          status: 404;
+          content: unknown;
+        };
   };
   /** Lists public gists for the specified user: */
   "gists/list-for-user": {
@@ -30768,16 +33898,19 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["base-gist"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["base-gist"][];
+          };
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** Lists the GPG keys for a user. This information is accessible by anyone. */
   "users/list-gpg-keys-for-user": {
@@ -30794,11 +33927,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["gpg-key"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["gpg-key"][];
       };
     };
   };
@@ -30824,16 +33956,22 @@ export interface operations {
         subject_id?: string;
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["hovercard"];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["hovercard"];
+          };
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      404: components["responses"]["not_found"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /**
    * Enables an authenticated GitHub App to find the user’s installation information.
@@ -30848,10 +33986,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["installation"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["installation"];
       };
     };
   };
@@ -30870,11 +34007,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["key-simple"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["key-simple"][];
       };
     };
   };
@@ -30897,11 +34033,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["organization-simple"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["organization-simple"][];
       };
     };
   };
@@ -30923,10 +34058,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package"];
       };
     };
   };
@@ -30946,17 +34080,26 @@ export interface operations {
         username: components["parameters"]["username"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["package-version"][];
+          };
+        }
+      | {
+          status: 401;
+          content: components["responses"]["requires_authentication"];
+        }
+      | {
+          status: 403;
+          content: components["responses"]["forbidden"];
+        }
+      | {
+          status: 404;
+          content: components["responses"]["not_found"];
         };
-      };
-      401: components["responses"]["requires_authentication"];
-      403: components["responses"]["forbidden"];
-      404: components["responses"]["not_found"];
-    };
   };
   /**
    * Gets a specific package version for a public package owned by a specified user.
@@ -30978,10 +34121,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["package-version"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["package-version"];
       };
     };
   };
@@ -30999,17 +34141,23 @@ export interface operations {
         page?: components["parameters"]["page"];
       };
     };
-    responses: {
-      /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["project"][];
+    responses:
+      | {
+          /** response */
+          status: 200;
+          headers: {};
+          content: {
+            "application/json": components["schemas"]["project"][];
+          };
+        }
+      | {
+          status: 415;
+          content: components["responses"]["preview_header_missing"];
+        }
+      | {
+          status: 422;
+          content: components["responses"]["validation_failed"];
         };
-      };
-      415: components["responses"]["preview_header_missing"];
-      422: components["responses"]["validation_failed"];
-    };
   };
   /** These are events that you've received by watching repos and following users. If you are authenticated as the given user, you will see private events. Otherwise, you'll only see public events. */
   "activity/list-received-events-for-user": {
@@ -31026,10 +34174,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -31047,10 +34194,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"][];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["event"][];
       };
     };
   };
@@ -31075,11 +34221,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["minimal-repository"][];
       };
     };
   };
@@ -31098,10 +34243,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["actions-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["actions-billing-usage"];
       };
     };
   };
@@ -31120,10 +34264,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["packages-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["packages-billing-usage"];
       };
     };
   };
@@ -31142,10 +34285,9 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["combined-billing-usage"];
-        };
+      status: 200;
+      content: {
+        "application/json": components["schemas"]["combined-billing-usage"];
       };
     };
   };
@@ -31172,12 +34314,11 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["repository"][];
-          "application/vnd.github.v3.star+json": components["schemas"]["starred-repository"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["repository"][];
+        "application/vnd.github.v3.star+json": components["schemas"]["starred-repository"][];
       };
     };
   };
@@ -31196,11 +34337,10 @@ export interface operations {
     };
     responses: {
       /** response */
-      200: {
-        headers: {};
-        content: {
-          "application/json": components["schemas"]["minimal-repository"][];
-        };
+      status: 200;
+      headers: {};
+      content: {
+        "application/json": components["schemas"]["minimal-repository"][];
       };
     };
   };
@@ -31208,10 +34348,9 @@ export interface operations {
   "meta/get-zen": {
     responses: {
       /** response */
-      200: {
-        content: {
-          "text/plain": string;
-        };
+      status: 200;
+      content: {
+        "text/plain": string;
       };
     };
   };

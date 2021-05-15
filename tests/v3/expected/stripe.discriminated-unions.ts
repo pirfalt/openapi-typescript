@@ -9162,20 +9162,21 @@ export interface components {
 export interface operations {
   /** <p>Initiate 3D Secure authentication.</p> */
   Post3dSecure: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["three_d_secure"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["three_d_secure"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9206,20 +9207,21 @@ export interface operations {
         three_d_secure: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["three_d_secure"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["three_d_secure"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9234,20 +9236,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9260,20 +9263,21 @@ export interface operations {
    * <p>To update your own account, use the <a href="https://dashboard.stripe.com/account">Dashboard</a>. Refer to our <a href="/docs/connect/updating-accounts">Connect</a> documentation to learn more about updating accounts.</p>
    */
   PostAccount: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9491,20 +9495,21 @@ export interface operations {
    * <p>If you want to delete your own account, use the <a href="https://dashboard.stripe.com/account">account information tab in your account settings</a> instead.</p>
    */
   DeleteAccount: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9515,20 +9520,21 @@ export interface operations {
   };
   /** <p>Create an external account for a given account.</p> */
   PostAccountBankAccounts: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9566,20 +9572,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9596,20 +9603,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9652,20 +9660,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9680,28 +9689,29 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["capability"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["capability"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9719,20 +9729,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["capability"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["capability"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9746,20 +9757,21 @@ export interface operations {
         capability: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["capability"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["capability"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9785,29 +9797,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
-            data: (Partial<components["schemas"]["bank_account"]> & Partial<components["schemas"]["card"]>)[];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
+              data: (Partial<components["schemas"]["bank_account"]> & Partial<components["schemas"]["card"]>)[];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9816,20 +9829,21 @@ export interface operations {
   };
   /** <p>Create an external account for a given account.</p> */
   PostAccountExternalAccounts: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9867,20 +9881,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9897,20 +9912,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -9953,20 +9969,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -9979,20 +9996,21 @@ export interface operations {
    * <p><strong>You may only create login links for <a href="/docs/connect/express-accounts">Express accounts</a> connected to your platform</strong>.</p>
    */
   PostAccountLoginLinks: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["login_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["login_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10011,20 +10029,21 @@ export interface operations {
    * <p><strong>You may only log out <a href="/docs/connect/express-accounts">Express accounts</a> connected to your platform</strong>.</p>
    */
   PutAccountLogout: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["light_account_logout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["light_account_logout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10056,28 +10075,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["person"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["person"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10086,20 +10106,21 @@ export interface operations {
   };
   /** <p>Creates a new person.</p> */
   PostAccountPeople: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10205,20 +10226,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10232,20 +10254,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10347,20 +10370,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10388,28 +10412,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["person"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["person"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10418,20 +10443,21 @@ export interface operations {
   };
   /** <p>Creates a new person.</p> */
   PostAccountPersons: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10537,20 +10563,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10564,20 +10591,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10679,20 +10707,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10701,20 +10730,21 @@ export interface operations {
   };
   /** <p>Creates an AccountLink object that returns a single-use Stripe URL that the user can redirect their user to in order to take them through the Connect Onboarding flow.</p> */
   PostAccountLinks: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -10755,28 +10785,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["account"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["account"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -10791,20 +10822,21 @@ export interface operations {
    * are used to prefill the account application that we ask the account holder to complete.</p>
    */
   PostAccounts: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11029,20 +11061,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11060,20 +11093,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11296,20 +11330,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11323,20 +11358,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11375,20 +11411,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11406,20 +11443,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11463,20 +11501,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11494,28 +11533,29 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["capability"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["capability"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11534,20 +11574,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["capability"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["capability"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11562,20 +11603,21 @@ export interface operations {
         capability: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["capability"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["capability"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11604,29 +11646,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
-            data: (Partial<components["schemas"]["bank_account"]> & Partial<components["schemas"]["card"]>)[];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
+              data: (Partial<components["schemas"]["bank_account"]> & Partial<components["schemas"]["card"]>)[];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11640,20 +11683,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11692,20 +11736,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11723,20 +11768,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11780,20 +11826,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_external_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_external_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11811,20 +11858,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["login_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["login_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11847,20 +11895,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["light_account_logout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["light_account_logout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -11894,28 +11943,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["person"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["person"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -11929,20 +11979,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12048,20 +12099,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12076,20 +12128,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12191,20 +12244,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12235,28 +12289,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["person"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["person"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12270,20 +12325,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12389,20 +12445,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12417,20 +12474,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12532,20 +12590,21 @@ export interface operations {
         person: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_person"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_person"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12563,20 +12622,21 @@ export interface operations {
         account: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12603,28 +12663,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["apple_pay_domain"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["apple_pay_domain"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12633,20 +12694,21 @@ export interface operations {
   };
   /** <p>Create an apple pay domain.</p> */
   PostApplePayDomains: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["apple_pay_domain"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["apple_pay_domain"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12668,20 +12730,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["apple_pay_domain"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["apple_pay_domain"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12695,20 +12758,21 @@ export interface operations {
         domain: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_apple_pay_domain"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_apple_pay_domain"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12738,28 +12802,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["application_fee"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["application_fee"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12778,20 +12843,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["fee_refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["fee_refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12810,20 +12876,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["fee_refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["fee_refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12846,20 +12913,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["application_fee"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["application_fee"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12872,20 +12940,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["application_fee"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["application_fee"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12914,29 +12983,30 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["fee_refund"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["fee_refund"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -12960,20 +13030,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["fee_refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["fee_refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -12998,20 +13069,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["balance"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["balance"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13058,28 +13130,29 @@ export interface operations {
         type?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["balance_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["balance_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13101,20 +13174,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["balance_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["balance_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13161,28 +13235,29 @@ export interface operations {
         type?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["balance_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["balance_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13204,20 +13279,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["balance_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["balance_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13226,20 +13302,21 @@ export interface operations {
   };
   /** <p>Creates a session of the Self-service Portal.</p> */
   PostBillingPortalSessions: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["billing_portal.session"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["billing_portal.session"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13273,28 +13350,29 @@ export interface operations {
         uncaptured_funds?: boolean;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["bitcoin_receiver"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["bitcoin_receiver"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13312,20 +13390,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["bitcoin_receiver"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["bitcoin_receiver"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13351,29 +13430,30 @@ export interface operations {
         receiver: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["bitcoin_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["bitcoin_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13397,29 +13477,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["bitcoin_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["bitcoin_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13453,28 +13534,29 @@ export interface operations {
         transfer_group?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["charge"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["charge"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13483,20 +13565,21 @@ export interface operations {
   };
   /** <p>To charge a credit card or other payment source, you create a <code>Charge</code> object. If your API key is in test mode, the supplied payment source (e.g., card) won’t actually be charged, although everything else will occur as if in live mode. (Stripe assumes that the charge would have completed successfully).</p> */
   PostCharges: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["charge"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["charge"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13586,20 +13669,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["charge"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["charge"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13613,20 +13697,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["charge"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["charge"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13676,20 +13761,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["charge"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["charge"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13728,20 +13814,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13754,20 +13841,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13817,20 +13905,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13859,20 +13948,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["charge"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["charge"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13906,29 +13996,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["refund"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["refund"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -13942,20 +14033,21 @@ export interface operations {
         charge: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -13984,20 +14076,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14012,20 +14105,21 @@ export interface operations {
         refund: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -14054,28 +14148,29 @@ export interface operations {
         subscription?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["checkout.session"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["checkout.session"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14084,20 +14179,21 @@ export interface operations {
   };
   /** <p>Creates a Session object.</p> */
   PostCheckoutSessions: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["checkout.session"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["checkout.session"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -14492,20 +14588,21 @@ export interface operations {
         session: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["checkout.session"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["checkout.session"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14526,28 +14623,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["country_spec"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["country_spec"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14565,20 +14663,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["country_spec"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["country_spec"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14607,28 +14706,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["coupon"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["coupon"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14641,20 +14741,21 @@ export interface operations {
    * <p>A coupon has either a <code>percent_off</code> or an <code>amount_off</code> and <code>currency</code>. If you set an <code>amount_off</code>, that amount will be subtracted from any invoice’s subtotal. For example, an invoice with a subtotal of <currency>100</currency> will have a final total of <currency>0</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it and an invoice with a subtotal of <currency>300</currency> will have a final total of <currency>100</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it.</p>
    */
   PostCoupons: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["coupon"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["coupon"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -14695,20 +14796,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["coupon"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["coupon"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14722,20 +14824,21 @@ export interface operations {
         coupon: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["coupon"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["coupon"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -14756,20 +14859,21 @@ export interface operations {
         coupon: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_coupon"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_coupon"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14794,28 +14898,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["credit_note"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["credit_note"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14839,20 +14944,21 @@ export interface operations {
    * or <code>post_payment_credit_notes_amount</code> depending on its <code>status</code> at the time of credit note creation.</p>
    */
   PostCreditNotes: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credit_note"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["credit_note"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -14928,20 +15034,21 @@ export interface operations {
         refund_amount?: number;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credit_note"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["credit_note"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -14991,29 +15098,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["credit_note_line_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["credit_note_line_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15037,29 +15145,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["credit_note_line_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["credit_note_line_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15077,20 +15186,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credit_note"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["credit_note"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15104,20 +15214,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credit_note"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["credit_note"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15138,20 +15249,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["credit_note"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["credit_note"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15184,28 +15296,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["customer"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["customer"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15214,20 +15327,21 @@ export interface operations {
   };
   /** <p>Creates a new customer object.</p> */
   PostCustomers: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["customer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["customer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15335,21 +15449,22 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["customer"]> &
-            Partial<components["schemas"]["deleted_customer"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["customer"]> &
+              Partial<components["schemas"]["deleted_customer"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15367,20 +15482,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["customer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["customer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15499,20 +15615,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_customer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_customer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15536,29 +15653,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["customer_balance_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["customer_balance_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15572,20 +15690,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["customer_balance_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["customer_balance_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15615,20 +15734,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["customer_balance_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["customer_balance_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15643,20 +15763,21 @@ export interface operations {
         transaction: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["customer_balance_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["customer_balance_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15687,29 +15808,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["bank_account"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["bank_account"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15729,20 +15851,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15798,20 +15921,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["bank_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["bank_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -15826,22 +15950,23 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["card"]> &
-            Partial<components["schemas"]["bank_account"]> &
-            Partial<components["schemas"]["source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["card"]> &
+              Partial<components["schemas"]["bank_account"]> &
+              Partial<components["schemas"]["source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15896,21 +16021,22 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["payment_source"]> &
-            Partial<components["schemas"]["deleted_payment_source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["payment_source"]> &
+              Partial<components["schemas"]["deleted_payment_source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15928,20 +16054,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["bank_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["bank_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -15974,28 +16101,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["card"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["card"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16015,20 +16143,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16084,20 +16213,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["card"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["card"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16112,22 +16242,23 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["card"]> &
-            Partial<components["schemas"]["bank_account"]> &
-            Partial<components["schemas"]["source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["card"]> &
+              Partial<components["schemas"]["bank_account"]> &
+              Partial<components["schemas"]["source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16182,21 +16313,22 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["payment_source"]> &
-            Partial<components["schemas"]["deleted_payment_source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["payment_source"]> &
+              Partial<components["schemas"]["deleted_payment_source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16216,20 +16348,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["discount"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["discount"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16243,20 +16376,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_discount"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_discount"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16282,33 +16416,34 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: (Partial<components["schemas"]["alipay_account"]> &
-              Partial<components["schemas"]["bank_account"]> &
-              Partial<components["schemas"]["bitcoin_receiver"]> &
-              Partial<components["schemas"]["card"]> &
-              Partial<components["schemas"]["source"]>)[];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: (Partial<components["schemas"]["alipay_account"]> &
+                Partial<components["schemas"]["bank_account"]> &
+                Partial<components["schemas"]["bitcoin_receiver"]> &
+                Partial<components["schemas"]["card"]> &
+                Partial<components["schemas"]["source"]>)[];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16328,20 +16463,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16397,20 +16533,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16425,22 +16562,23 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["card"]> &
-            Partial<components["schemas"]["bank_account"]> &
-            Partial<components["schemas"]["source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["card"]> &
+              Partial<components["schemas"]["bank_account"]> &
+              Partial<components["schemas"]["source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16495,21 +16633,22 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["payment_source"]> &
-            Partial<components["schemas"]["deleted_payment_source"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["payment_source"]> &
+              Partial<components["schemas"]["deleted_payment_source"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16527,20 +16666,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["bank_account"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["bank_account"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16569,29 +16709,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["subscription"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["subscription"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16605,20 +16746,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16713,20 +16855,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16741,20 +16884,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16860,20 +17004,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -16898,20 +17043,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["discount"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["discount"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16926,20 +17072,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_discount"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_discount"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16963,29 +17110,30 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["tax_id"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["tax_id"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -16999,20 +17147,21 @@ export interface operations {
         customer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["tax_id"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["tax_id"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17061,20 +17210,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["tax_id"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["tax_id"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17089,20 +17239,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_tax_id"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_tax_id"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17134,28 +17285,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["dispute"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["dispute"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17173,20 +17325,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17204,20 +17357,21 @@ export interface operations {
         dispute: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17272,20 +17426,21 @@ export interface operations {
         dispute: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17297,20 +17452,21 @@ export interface operations {
   };
   /** <p>Creates a short-lived API key for a given resource.</p> */
   PostEphemeralKeys: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["ephemeral_key"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["ephemeral_key"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17331,20 +17487,21 @@ export interface operations {
         key: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["ephemeral_key"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["ephemeral_key"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17381,28 +17538,29 @@ export interface operations {
         types?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["event"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["event"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17420,20 +17578,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["event"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["event"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17454,28 +17613,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["exchange_rate"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["exchange_rate"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17493,20 +17653,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["exchange_rate"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["exchange_rate"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17538,28 +17699,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["file_link"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["file_link"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17568,20 +17730,21 @@ export interface operations {
   };
   /** <p>Creates a new file link object.</p> */
   PostFileLinks: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17608,20 +17771,21 @@ export interface operations {
         link: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17635,20 +17799,21 @@ export interface operations {
         link: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file_link"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file_link"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17695,28 +17860,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["file"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["file"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17729,20 +17895,21 @@ export interface operations {
    * <p>All of Stripe’s officially supported Client libraries should have support for sending <code>multipart/form-data</code>.</p>
    */
   PostFiles: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "multipart/form-data": {
@@ -17781,20 +17948,21 @@ export interface operations {
         file: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["file"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["file"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17828,28 +17996,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["invoiceitem"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["invoiceitem"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17858,20 +18027,21 @@ export interface operations {
   };
   /** <p>Creates an item to be added to a draft invoice. If no invoice is specified, the item will be on the next invoice created for the customer specified.</p> */
   PostInvoiceitems: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoiceitem"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoiceitem"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17921,20 +18091,21 @@ export interface operations {
         invoiceitem: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoiceitem"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoiceitem"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -17948,20 +18119,21 @@ export interface operations {
         invoiceitem: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoiceitem"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoiceitem"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -17999,20 +18171,21 @@ export interface operations {
         invoiceitem: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_invoiceitem"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_invoiceitem"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18055,28 +18228,29 @@ export interface operations {
         subscription?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["invoice"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["invoice"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18085,20 +18259,21 @@ export interface operations {
   };
   /** <p>This endpoint creates a draft invoice for a given customer. The draft invoice created pulls in all pending invoice items on that customer, including prorations.</p> */
   PostInvoices: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18229,20 +18404,21 @@ export interface operations {
         subscription_trial_from_plan?: boolean;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18332,29 +18508,30 @@ export interface operations {
         subscription_trial_from_plan?: boolean;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["line_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["line_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18372,20 +18549,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18406,20 +18584,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18470,20 +18649,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18497,20 +18677,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18539,29 +18720,30 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["line_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["line_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18575,20 +18757,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18605,20 +18788,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18653,20 +18837,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18683,20 +18868,21 @@ export interface operations {
         invoice: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["invoice"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["invoice"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18722,28 +18908,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuer_fraud_record"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuer_fraud_record"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18765,20 +18952,21 @@ export interface operations {
         issuer_fraud_record: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuer_fraud_record"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuer_fraud_record"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18813,28 +19001,29 @@ export interface operations {
         status?: "closed" | "pending" | "reversed";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.authorization"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.authorization"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18852,20 +19041,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.authorization"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.authorization"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -18879,20 +19069,21 @@ export interface operations {
         authorization: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.authorization"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.authorization"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18911,20 +19102,21 @@ export interface operations {
         authorization: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.authorization"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.authorization"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -18945,20 +19137,21 @@ export interface operations {
         authorization: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.authorization"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.authorization"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -19000,28 +19193,29 @@ export interface operations {
         type?: "company" | "individual";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.cardholder"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.cardholder"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -19030,20 +19224,21 @@ export interface operations {
   };
   /** <p>Creates a new Issuing <code>Cardholder</code> object that can be issued cards.</p> */
   PostIssuingCardholders: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.cardholder"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.cardholder"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -19985,20 +20180,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.cardholder"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.cardholder"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -20012,20 +20208,21 @@ export interface operations {
         cardholder: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.cardholder"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.cardholder"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -20986,28 +21183,29 @@ export interface operations {
         type?: "physical" | "virtual";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.card"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.card"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -21016,20 +21214,21 @@ export interface operations {
   };
   /** <p>Creates an Issuing <code>Card</code> object.</p> */
   PostIssuingCards: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.card"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.card"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -21955,20 +22154,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.card"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.card"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -21982,20 +22182,21 @@ export interface operations {
         card: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.card"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.card"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -22902,28 +23103,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.dispute"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.dispute"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -22932,20 +23134,21 @@ export interface operations {
   };
   /** <p>Creates an Issuing <code>Dispute</code> object.</p> */
   PostIssuingDisputes: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -22968,20 +23171,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -22995,20 +23199,21 @@ export interface operations {
         dispute: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.dispute"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.dispute"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23042,28 +23247,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.settlement"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.settlement"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23081,20 +23287,21 @@ export interface operations {
         settlement: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.settlement"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.settlement"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23108,20 +23315,21 @@ export interface operations {
         settlement: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.settlement"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.settlement"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23159,28 +23367,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["issuing.transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["issuing.transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23198,20 +23407,21 @@ export interface operations {
         transaction: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23225,20 +23435,21 @@ export interface operations {
         transaction: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["issuing.transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["issuing.transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23261,20 +23472,21 @@ export interface operations {
         mandate: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["mandate"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["mandate"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23305,28 +23517,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["order_return"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["order_return"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23344,20 +23557,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order_return"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order_return"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23425,28 +23639,29 @@ export interface operations {
         upstream_ids?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["order"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["order"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23455,20 +23670,21 @@ export interface operations {
   };
   /** <p>Creates a new order object.</p> */
   PostOrders: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23521,20 +23737,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23548,20 +23765,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23591,20 +23809,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23631,20 +23850,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["order_return"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["order_return"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23689,28 +23909,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["payment_intent"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["payment_intent"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23730,20 +23951,21 @@ export interface operations {
    * is supplied.</p>
    */
   PostPaymentIntents: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -23886,20 +24108,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -23921,20 +24144,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24031,20 +24255,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24069,20 +24294,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24144,20 +24370,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24270,28 +24497,29 @@ export interface operations {
         type: "au_becs_debit" | "card" | "card_present" | "fpx" | "ideal" | "sepa_debit";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["payment_method"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["payment_method"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24300,20 +24528,21 @@ export interface operations {
   };
   /** <p>Creates a PaymentMethod object. Read the <a href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js reference</a> to learn how to create PaymentMethods via Stripe.js.</p> */
   PostPaymentMethods: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_method"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_method"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24415,20 +24644,21 @@ export interface operations {
         payment_method: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_method"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_method"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24442,20 +24672,21 @@ export interface operations {
         payment_method: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_method"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_method"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24507,20 +24738,21 @@ export interface operations {
         payment_method: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_method"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_method"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24539,20 +24771,21 @@ export interface operations {
         payment_method: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payment_method"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payment_method"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24594,28 +24827,29 @@ export interface operations {
         status?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["payout"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["payout"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24630,20 +24864,21 @@ export interface operations {
    * <p>If you are creating a manual payout on a Stripe account that uses multiple payment source types, you’ll need to specify the source type balance that the payout should draw from. The <a href="#balance_object">balance object</a> details available and pending amounts by source type.</p>
    */
   PostPayouts: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24680,20 +24915,21 @@ export interface operations {
         payout: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24707,20 +24943,21 @@ export interface operations {
         payout: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24739,20 +24976,21 @@ export interface operations {
         payout: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["payout"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["payout"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24788,28 +25026,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["plan"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["plan"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24818,20 +25057,21 @@ export interface operations {
   };
   /** <p>You can create plans using the API, or in the Stripe <a href="https://dashboard.stripe.com/subscriptions/products">Dashboard</a>.</p> */
   PostPlans: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["plan"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["plan"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24902,20 +25142,21 @@ export interface operations {
         plan: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["plan"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["plan"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -24929,20 +25170,21 @@ export interface operations {
         plan: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["plan"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["plan"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -24969,20 +25211,21 @@ export interface operations {
         plan: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_plan"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_plan"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25021,28 +25264,29 @@ export interface operations {
         url?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["product"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["product"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25051,20 +25295,21 @@ export interface operations {
   };
   /** <p>Creates a new product object. To create a product for use with orders, see <a href="#create_product">Products</a>.</p> */
   PostProducts: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["product"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["product"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25125,20 +25370,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["product"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["product"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25152,20 +25398,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["product"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["product"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25219,20 +25466,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_product"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_product"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25255,28 +25503,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["radar.early_fraud_warning"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["radar.early_fraud_warning"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25298,20 +25547,21 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.early_fraud_warning"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.early_fraud_warning"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25343,28 +25593,29 @@ export interface operations {
         value_list: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["radar.value_list_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["radar.value_list_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25373,20 +25624,21 @@ export interface operations {
   };
   /** <p>Creates a new <code>ValueListItem</code> object, which is added to the specified parent value list.</p> */
   PostRadarValueListItems: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.value_list_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.value_list_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25411,20 +25663,21 @@ export interface operations {
         item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.value_list_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.value_list_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25438,20 +25691,21 @@ export interface operations {
         item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_radar.value_list_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_radar.value_list_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25483,28 +25737,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["radar.value_list"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["radar.value_list"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25513,20 +25768,21 @@ export interface operations {
   };
   /** <p>Creates a new <code>ValueList</code> object, which can then be referenced in rules.</p> */
   PostRadarValueLists: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.value_list"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.value_list"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25562,20 +25818,21 @@ export interface operations {
         value_list: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.value_list"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.value_list"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25589,20 +25846,21 @@ export interface operations {
         value_list: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["radar.value_list"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["radar.value_list"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25625,20 +25883,21 @@ export interface operations {
         value_list: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_radar.value_list"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_radar.value_list"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25669,28 +25928,29 @@ export interface operations {
         verified?: boolean;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["recipient"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["recipient"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25702,20 +25962,21 @@ export interface operations {
    * Also verifies the recipient’s bank account information or debit card, if either is provided.</p>
    */
   PostRecipients: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["recipient"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["recipient"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25752,21 +26013,22 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["recipient"]> &
-            Partial<components["schemas"]["deleted_recipient"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["recipient"]> &
+              Partial<components["schemas"]["deleted_recipient"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25786,20 +26048,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["recipient"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["recipient"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25832,20 +26095,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_recipient"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_recipient"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25877,28 +26141,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["refund"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["refund"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25907,20 +26172,21 @@ export interface operations {
   };
   /** <p>Create a refund.</p> */
   PostRefunds: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -25949,20 +26215,21 @@ export interface operations {
         refund: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -25980,20 +26247,21 @@ export interface operations {
         refund: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["refund"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["refund"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -26026,28 +26294,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["reporting.report_run"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["reporting.report_run"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26056,20 +26325,21 @@ export interface operations {
   };
   /** <p>Creates a new object and begin running the report. (Requires a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)</p> */
   PostReportingReportRuns: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reporting.report_run"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reporting.report_run"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -26728,20 +26998,21 @@ export interface operations {
         report_run: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reporting.report_run"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reporting.report_run"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26756,28 +27027,29 @@ export interface operations {
         expand?: string[];
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["reporting.report_type"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["reporting.report_type"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26795,20 +27067,21 @@ export interface operations {
         report_type: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["reporting.report_type"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["reporting.report_type"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26836,28 +27109,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["review"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["review"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26875,20 +27149,21 @@ export interface operations {
         review: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["review"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["review"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26902,20 +27177,21 @@ export interface operations {
         review: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["review"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["review"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -26951,28 +27227,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["setup_intent"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["setup_intent"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -26986,20 +27263,21 @@ export interface operations {
    * to collect any required permissions to charge the payment method later.</p>
    */
   PostSetupIntents: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["setup_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["setup_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27073,20 +27351,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["setup_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["setup_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27100,20 +27379,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["setup_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["setup_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27154,20 +27434,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["setup_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["setup_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27200,20 +27481,21 @@ export interface operations {
         intent: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["setup_intent"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["setup_intent"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27274,28 +27556,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["scheduled_query_run"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["scheduled_query_run"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27313,20 +27596,21 @@ export interface operations {
         scheduled_query_run: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["scheduled_query_run"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["scheduled_query_run"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27357,28 +27641,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["sku"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["sku"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27387,20 +27672,21 @@ export interface operations {
   };
   /** <p>Creates a new SKU associated with a product.</p> */
   PostSkus: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["sku"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["sku"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27450,20 +27736,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": Partial<components["schemas"]["sku"]> & Partial<components["schemas"]["deleted_sku"]>;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": Partial<components["schemas"]["sku"]> & Partial<components["schemas"]["deleted_sku"]>;
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27481,20 +27768,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["sku"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["sku"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27539,20 +27827,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_sku"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_sku"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27561,20 +27850,21 @@ export interface operations {
   };
   /** <p>Creates a new source object.</p> */
   PostSources: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27684,20 +27974,21 @@ export interface operations {
         source: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27715,20 +28006,21 @@ export interface operations {
         source: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27815,20 +28107,21 @@ export interface operations {
         source: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source_mandate_notification"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source_mandate_notification"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27852,28 +28145,29 @@ export interface operations {
         source: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["source_transaction"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["source_transaction"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27892,20 +28186,21 @@ export interface operations {
         source_transaction: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source_transaction"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source_transaction"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27919,20 +28214,21 @@ export interface operations {
         source: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["source"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["source"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -27960,28 +28256,29 @@ export interface operations {
         subscription: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["subscription_item"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["subscription_item"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -27990,20 +28287,21 @@ export interface operations {
   };
   /** <p>Adds a new item to an existing subscription. No existing items will be changed or replaced.</p> */
   PostSubscriptionItems: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28059,20 +28357,21 @@ export interface operations {
         item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28086,20 +28385,21 @@ export interface operations {
         item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28151,20 +28451,21 @@ export interface operations {
         item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_subscription_item"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_subscription_item"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28207,28 +28508,29 @@ export interface operations {
         subscription_item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["usage_record_summary"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["usage_record_summary"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28250,20 +28552,21 @@ export interface operations {
         subscription_item: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["usage_record"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["usage_record"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28329,28 +28632,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["subscription_schedule"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["subscription_schedule"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28359,20 +28663,21 @@ export interface operations {
   };
   /** <p>Creates a new subscription schedule object. Each customer can have up to 25 active or scheduled subscriptions.</p> */
   PostSubscriptionSchedules: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_schedule"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_schedule"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28447,20 +28752,21 @@ export interface operations {
         schedule: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_schedule"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_schedule"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28474,20 +28780,21 @@ export interface operations {
         schedule: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_schedule"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_schedule"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28557,20 +28864,21 @@ export interface operations {
         schedule: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_schedule"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_schedule"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28591,20 +28899,21 @@ export interface operations {
         schedule: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription_schedule"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription_schedule"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28668,28 +28977,29 @@ export interface operations {
           | "unpaid";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["subscription"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["subscription"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28698,20 +29008,21 @@ export interface operations {
   };
   /** <p>Creates a new subscription on an existing customer. Each customer can have up to 25 active or scheduled subscriptions.</p> */
   PostSubscriptions: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28807,20 +29118,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -28834,20 +29146,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28952,20 +29265,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["subscription"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["subscription"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -28986,20 +29300,21 @@ export interface operations {
         subscription_exposed_id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_discount"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_discount"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29032,28 +29347,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["tax_rate"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["tax_rate"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29062,20 +29378,21 @@ export interface operations {
   };
   /** <p>Creates a new tax rate.</p> */
   PostTaxRates: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["tax_rate"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["tax_rate"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29110,20 +29427,21 @@ export interface operations {
         tax_rate: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["tax_rate"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["tax_rate"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29137,20 +29455,21 @@ export interface operations {
         tax_rate: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["tax_rate"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["tax_rate"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29172,20 +29491,21 @@ export interface operations {
   };
   /** <p>To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived connection token from Stripe, proxied through your server. On your backend, add an endpoint that creates and returns a connection token.</p> */
   PostTerminalConnectionTokens: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.connection_token"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.connection_token"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29211,28 +29531,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["terminal.location"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["terminal.location"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29241,20 +29562,21 @@ export interface operations {
   };
   /** <p>Creates a new <code>Location</code> object.</p> */
   PostTerminalLocations: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.location"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.location"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29288,20 +29610,21 @@ export interface operations {
         location: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.location"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.location"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29315,20 +29638,21 @@ export interface operations {
         location: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.location"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.location"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29358,20 +29682,21 @@ export interface operations {
         location: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_terminal.location"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_terminal.location"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29398,29 +29723,30 @@ export interface operations {
         status?: "offline" | "online";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** A list of readers */
-            data: components["schemas"]["terminal.reader"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** A list of readers */
+              data: components["schemas"]["terminal.reader"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29429,20 +29755,21 @@ export interface operations {
   };
   /** <p>Creates a new <code>Reader</code> object.</p> */
   PostTerminalReaders: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.reader"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.reader"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29471,20 +29798,21 @@ export interface operations {
         reader: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.reader"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.reader"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29498,20 +29826,21 @@ export interface operations {
         reader: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["terminal.reader"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["terminal.reader"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29532,20 +29861,21 @@ export interface operations {
         reader: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_terminal.reader"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_terminal.reader"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29557,20 +29887,21 @@ export interface operations {
    * This token can be used with any API method in place of a bank account dictionary. This token can be used only once, by attaching it to a <a href="#accounts">Custom account</a>.</p>
    */
   PostTokens: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["token"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["token"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29810,20 +30141,21 @@ export interface operations {
         token: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["token"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["token"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29862,28 +30194,29 @@ export interface operations {
         status?: "canceled" | "failed" | "pending" | "succeeded";
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["topup"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["topup"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29892,20 +30225,21 @@ export interface operations {
   };
   /** <p>Top up the balance of an account</p> */
   PostTopups: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topup"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topup"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -29940,20 +30274,21 @@ export interface operations {
         topup: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topup"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topup"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -29967,20 +30302,21 @@ export interface operations {
         topup: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topup"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topup"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30001,20 +30337,21 @@ export interface operations {
         topup: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["topup"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["topup"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30049,29 +30386,30 @@ export interface operations {
         transfer_group?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["transfer"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["transfer"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30080,20 +30418,21 @@ export interface operations {
   };
   /** <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.</p> */
   PostTransfers: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30136,29 +30475,30 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            /** Details about each object. */
-            data: components["schemas"]["transfer_reversal"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              /** Details about each object. */
+              data: components["schemas"]["transfer_reversal"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30178,20 +30518,21 @@ export interface operations {
         id: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer_reversal"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer_reversal"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30220,20 +30561,21 @@ export interface operations {
         transfer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30251,20 +30593,21 @@ export interface operations {
         transfer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30290,20 +30633,21 @@ export interface operations {
         transfer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer_reversal"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer_reversal"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30322,20 +30666,21 @@ export interface operations {
         transfer: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["transfer_reversal"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["transfer_reversal"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30361,28 +30706,29 @@ export interface operations {
         starting_after?: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": {
-            data: components["schemas"]["webhook_endpoint"][];
-            /** True if this list has another page of items after this one that can be fetched. */
-            has_more: boolean;
-            /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
-            object: "list";
-            /** The URL where this list can be accessed. */
-            url: string;
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": {
+              data: components["schemas"]["webhook_endpoint"][];
+              /** True if this list has another page of items after this one that can be fetched. */
+              has_more: boolean;
+              /** String representing the object's type. Objects of the same type share the same value. Always has the value `list`. */
+              object: "list";
+              /** The URL where this list can be accessed. */
+              url: string;
+            };
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
           };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30391,20 +30737,21 @@ export interface operations {
   };
   /** <p>A webhook endpoint must have a <code>url</code> and a list of <code>enabled_events</code>. You may optionally specify the Boolean <code>connect</code> parameter. If set to true, then a Connect webhook endpoint that notifies the specified <code>url</code> about events from all connected accounts is created; otherwise an account webhook endpoint that notifies the specified <code>url</code> only about events from your account is created. You can also create webhook endpoints in the <a href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a> section of the Dashboard.</p> */
   PostWebhookEndpoints: {
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook_endpoint"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["webhook_endpoint"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30682,20 +31029,21 @@ export interface operations {
         webhook_endpoint: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook_endpoint"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["webhook_endpoint"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
@@ -30709,20 +31057,21 @@ export interface operations {
         webhook_endpoint: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["webhook_endpoint"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["webhook_endpoint"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": {
@@ -30899,20 +31248,21 @@ export interface operations {
         webhook_endpoint: string;
       };
     };
-    responses: {
-      /** Successful response. */
-      200: {
-        content: {
-          "application/json": components["schemas"]["deleted_webhook_endpoint"];
+    responses:
+      | {
+          /** Successful response. */
+          status: 200;
+          content: {
+            "application/json": components["schemas"]["deleted_webhook_endpoint"];
+          };
+        }
+      | {
+          /** Error response. */
+          status: "default";
+          content: {
+            "application/json": components["schemas"]["error"];
+          };
         };
-      };
-      /** Error response. */
-      default: {
-        content: {
-          "application/json": components["schemas"]["error"];
-        };
-      };
-    };
     requestBody: {
       content: {
         "application/x-www-form-urlencoded": { [key: string]: any };
