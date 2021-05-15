@@ -9,10 +9,11 @@ const resType = (res: string | number) => (res === 204 || (res >= 300 && res < 4
 interface Options {
   formatter?: SchemaFormatter;
   immutableTypes: boolean;
+  discriminatedUnions: boolean;
 }
 
 export function transformResponsesObj(responsesObj: Record<string, any>, options: Options): string {
-  const { immutableTypes } = options;
+  const { immutableTypes, discriminatedUnions } = options;
   const readonly = tsReadonly(immutableTypes);
 
   let output = "";
@@ -23,16 +24,28 @@ export function transformResponsesObj(responsesObj: Record<string, any>, options
     const statusCode = Number(httpStatusCode) || `"${httpStatusCode}"`; // don’t surround w/ quotes if numeric status code
 
     if (response.$ref) {
-      output += `  ${readonly}${statusCode}: ${transformRef(response.$ref)};\n`; // reference
+      if (discriminatedUnions) {
+        output += `  status: ${readonly}${statusCode};\n  content: ${transformRef(response.$ref)};\n`; // reference
+      } else {
+        output += `  ${readonly}${statusCode}: ${transformRef(response.$ref)};\n`; // reference
+      }
       return;
     }
 
     if ((!response.content && !response.schema) || (response.content && !Object.keys(response.content).length)) {
-      output += `  ${readonly}${statusCode}: ${resType(statusCode)};\n`; // unknown / missing response
+      if (discriminatedUnions) {
+        output += `  status: ${readonly}${statusCode};\n  content: ${resType(statusCode)};\n`; // unknown / missing response
+      } else {
+        output += `  ${readonly}${statusCode}: ${resType(statusCode)};\n`; // unknown / missing response
+      }
       return;
     }
 
-    output += `  ${readonly}${statusCode}: {\n`; // open response
+    if (discriminatedUnions) {
+      output += `  status: ${readonly}${statusCode};\n`; // open response
+    } else {
+      output += `  ${readonly}${statusCode}: {\n`; // open response
+    }
 
     // headers
     if (response.headers && Object.keys(response.headers).length) {
@@ -60,8 +73,17 @@ export function transformResponsesObj(responsesObj: Record<string, any>, options
       output += `  ${readonly} schema: ${transformSchemaObj(response.schema, options)};\n`;
     }
 
-    output += `  }\n`; // close response
+    if (discriminatedUnions) {
+      output += `  } | {\n  `; // close response
+    } else {
+      output += `  }\n`; // close response
+    }
   });
+
+  const trailer = "  } | {\n  ";
+  if (output.endsWith(trailer)) {
+    output = output.substring(0, output.lastIndexOf(trailer));
+  }
   return output;
 }
 

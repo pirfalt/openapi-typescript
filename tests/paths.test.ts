@@ -6,6 +6,7 @@ const transform = (schema: any, operations: any = { operations: {}, globalParame
     `export interface paths {\n${transformPathsObj(schema, {
       globalParameters,
       immutableTypes: operations.immutableTypes,
+      discriminatedUnions: operations.discriminatedUnions,
       operations,
       version: 3,
     })}\n}`.trim(),
@@ -153,6 +154,48 @@ describe("transformPathsObj", () => {
     };
   };
 }\n`);
+
+    expect(transform(basicSchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  "/": {
+    get: {
+      responses: {
+        status: 200;
+        content: {
+          "application/json": {
+            title: string;
+            body: string;
+          };
+        };
+      };
+    };
+  };
+  "/search": {
+    post: {
+      parameters: {
+        query: {
+          q: string;
+          p?: number;
+        };
+      };
+      responses:
+        | {
+            status: 200;
+            content: {
+              "application/json": {
+                results?: components["schemas"]["SearchResult"][];
+                total: number;
+              };
+            };
+          }
+        | {
+            status: 404;
+            content: {
+              "application/json": components["schemas"]["ErrorResponse"];
+            };
+          };
+    };
+  };
+}\n`);
   });
 
   it("empty responses (#333, #536)", () => {
@@ -257,6 +300,44 @@ describe("transformPathsObj", () => {
     };
   };
 }\n`);
+
+    expect(transform(emptyResponsesSchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  "/no-content": {
+    get: {
+      responses:
+        | {
+            /** OK */
+            status: 200;
+            content: {
+              "application/json": unknown;
+            };
+          }
+        | {
+            /** Empty response */
+            status: 204;
+            content: never;
+          };
+    };
+  };
+  "/not-modified": {
+    get: {
+      responses: {
+        /** Empty response */
+        status: 304;
+        content: never;
+      };
+    };
+  };
+  "/not-found": {
+    get: {
+      responses: {
+        /** Empty response */
+        status: 404;
+        content: unknown;
+      };
+    };
+  };
+}\n`);
   });
 
   it("requestBody (#338)", () => {
@@ -349,6 +430,30 @@ describe("transformPathsObj", () => {
     readonly delete: operations["testsDelete"];
   };
 }\n`);
+
+    expect(transform(requestBodySchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  "/tests": {
+    post: {
+      responses: {
+        status: 201;
+        content: {
+          "application/json": {
+            id: string;
+            title: string;
+          };
+        };
+      };
+      requestBody: {
+        content: {
+          "application/json": {
+            title: string;
+          };
+        };
+      };
+    };
+    delete: operations["testsDelete"];
+  };
+}\n`);
   });
 
   it("$refs in paths (#329, #351, #408)", () => {
@@ -436,6 +541,44 @@ describe("transformPathsObj", () => {
     };
   };
 }\n`);
+
+    expect(
+      transform(
+        refsSchema,
+        { discriminatedUnions: true },
+        {
+          param1: {
+            name: "param1",
+            description: "some description",
+            in: "query",
+            required: true,
+            schema: { type: "string" },
+          },
+          param2: {
+            name: "param2",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+          },
+        }
+      )
+    ).toBe(`export interface paths {
+  "/some/path": {
+    get: {
+      parameters: {
+        query: {
+          /** some description */
+          param1: components["parameters"]["param1"];
+          param2?: components["parameters"]["param2"];
+        };
+      };
+      responses: {
+        status: 400;
+        content: components["responses"]["400BadRequest"];
+      };
+    };
+  };
+}\n`);
   });
 
   it("parameters on entire path (#346)", () => {
@@ -492,6 +635,24 @@ describe("transformPathsObj", () => {
     };
   };
 }\n`);
+
+    expect(transform(parametersSchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  "/{example}": {
+    get: {
+      parameters: {
+        path: {
+          example: string;
+        };
+      };
+      responses: {};
+    };
+    parameters: {
+      path: {
+        example: string;
+      };
+    };
+  };
+}\n`);
   });
 
   it("parameters missing schema (#377)", () => {
@@ -539,6 +700,20 @@ describe("transformPathsObj", () => {
     };
   };
 }\n`);
+
+    expect(transform(parametersMissingSchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  "/c/{id}.json": {
+    /** Get a list of topics in the specified category */
+    get: {
+      parameters: {
+        path: {
+          id: unknown;
+        };
+      };
+      responses: {};
+    };
+  };
+}\n`);
   });
 
   it("paths include 'summary' and 'description'", () => {
@@ -570,6 +745,16 @@ describe("transformPathsObj", () => {
     /** get description */
     readonly get: {
       readonly responses: {};
+    };
+  };
+}\n`);
+
+    expect(transform(pathsIncludeSchema, { discriminatedUnions: true })).toBe(`export interface paths {
+  /** root description */
+  "/": {
+    /** get description */
+    get: {
+      responses: {};
     };
   };
 }\n`);
