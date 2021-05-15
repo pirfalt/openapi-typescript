@@ -115,6 +115,8 @@ export interface SwaggerToTSOptions {
   formatter?: SchemaFormatter;
   /** Generates immutable types (readonly properties and readonly array) */
   immutableTypes?: boolean;
+  /** Generates discriminated union response types (oneOf for responses) */
+  discriminatedUnions?: boolean;
   /** (optional) Path to Prettier config */
   prettierConfig?: string;
   /** (optional) Parsing input document as raw schema rather than OpenAPI document */

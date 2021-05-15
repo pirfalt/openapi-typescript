@@ -9,11 +9,15 @@ import { transformSchemaObjMap } from "./schema";
 interface TransformOptions {
   formatter?: SchemaFormatter;
   immutableTypes: boolean;
+  discriminatedUnions: boolean;
   rawSchema?: boolean;
   version: number;
 }
 
-export function transformAll(schema: any, { formatter, immutableTypes, rawSchema, version }: TransformOptions): string {
+export function transformAll(
+  schema: any,
+  { formatter, immutableTypes, discriminatedUnions, rawSchema, version }: TransformOptions
+): string {
   const readonly = tsReadonly(immutableTypes);
 
   let output = "";
@@ -46,6 +50,7 @@ export function transformAll(schema: any, { formatter, immutableTypes, rawSchema
     output += transformPathsObj(schema.paths, {
       globalParameters: (schema.components && schema.components.parameters) || schema.parameters,
       immutableTypes,
+      discriminatedUnions,
       operations,
       version,
     });
@@ -78,6 +83,7 @@ export function transformAll(schema: any, { formatter, immutableTypes, rawSchema
         output += `export interface responses {\n    ${transformResponsesObj(schema.responses, {
           formatter,
           immutableTypes,
+          discriminatedUnions,
         })}\n  }\n\n`;
       }
       break;
@@ -102,6 +108,7 @@ export function transformAll(schema: any, { formatter, immutableTypes, rawSchema
           output += `  ${readonly}responses: {\n    ${transformResponsesObj(schema.components.responses, {
             formatter,
             immutableTypes,
+            discriminatedUnions,
           })}\n  }\n`;
         }
 
@@ -120,6 +127,7 @@ export function transformAll(schema: any, { formatter, immutableTypes, rawSchema
           output += `  ${readonly}requestBodies: {\n    ${transformRequestBodies(schema.components.requestBodies, {
             formatter,
             immutableTypes,
+            discriminatedUnions,
           })}\n  }\n`;
         }
 
@@ -145,6 +153,7 @@ export function transformAll(schema: any, { formatter, immutableTypes, rawSchema
         pathItem,
         globalParameters: (schema.components && schema.components.parameters) || schema.parameters,
         immutableTypes,
+        discriminatedUnions,
         version,
       })}\n  }\n`;
     });

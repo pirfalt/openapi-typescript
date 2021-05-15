@@ -12,13 +12,14 @@ const cli = meow(
   $ openapi-typescript [input] [options]
 
 Options
-  --help                display this
-  --output, -o          Specify output file (default: stdout)
-  --auth                (optional) Provide an authentication token for private URL
-  --immutable-types     (optional) Generates immutable types (readonly properties and readonly array)
-  --prettier-config     (optional) specify path to Prettier config file
-  --raw-schema          (optional) Read from raw schema instead of document
-  --version             (optional) Schema version (must be present for raw schemas)
+  --help                  display this
+  --output, -o            Specify output file (default: stdout)
+  --auth                  (optional) Provide an authentication token for private URL
+  --immutable-types       (optional) Generates immutable types (readonly properties and readonly array)
+  --discriminated-unions  (optional) Generates discriminated union response types (oneOf for responses)
+  --prettier-config       (optional) specify path to Prettier config file
+  --raw-schema            (optional) Read from raw schema instead of document
+  --version               (optional) Schema version (must be present for raw schemas)
 `,
   {
     flags: {
@@ -30,6 +31,9 @@ Options
         type: "string",
       },
       immutableTypes: {
+        type: "boolean",
+      },
+      discriminatedUnions: {
         type: "boolean",
       },
       prettierConfig: {
@@ -74,6 +78,7 @@ async function main() {
   // 2. generate schema (the main part!)
   const result = openapiTS(spec, {
     immutableTypes: cli.flags.immutableTypes,
+    discriminatedUnions: cli.flags.discriminatedUnions,
     prettierConfig: cli.flags.prettierConfig,
     rawSchema: cli.flags.rawSchema,
     version: cli.flags.version,

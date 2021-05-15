@@ -9,12 +9,14 @@ export function transformOperationObj(
   {
     globalParameters,
     immutableTypes,
+    discriminatedUnions,
     pathItem = {},
     version,
   }: {
     pathItem?: PathItemObject;
     globalParameters?: Record<string, ParameterObject>;
     immutableTypes: boolean;
+    discriminatedUnions: boolean;
     version: number;
   }
 ): string {
@@ -34,6 +36,7 @@ export function transformOperationObj(
   if (operation.responses) {
     output += `  ${readonly}responses: {\n  ${transformResponsesObj(operation.responses, {
       immutableTypes,
+      discriminatedUnions,
     })}\n  }\n`;
   }
 

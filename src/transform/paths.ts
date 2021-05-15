@@ -6,6 +6,7 @@ import { transformParametersArray } from "./parameters";
 interface TransformPathsObjOption {
   globalParameters: Record<string, ParameterObject>;
   immutableTypes: boolean;
+  discriminatedUnions: boolean;
   operations: Record<string, { operation: OperationObject; pathItem: PathItemObject }>;
   version: number;
 }
@@ -13,7 +14,7 @@ interface TransformPathsObjOption {
 /** Note: this needs to mutate objects passed in */
 export function transformPathsObj(
   paths: Record<string, PathItemObject>,
-  { globalParameters, immutableTypes, operations, version }: TransformPathsObjOption
+  { globalParameters, immutableTypes, discriminatedUnions, operations, version }: TransformPathsObjOption
 ): string {
   const readonly = tsReadonly(immutableTypes);
 
@@ -47,6 +48,7 @@ export function transformPathsObj(
       output += `    ${readonly}"${method}": {\n      ${transformOperationObj(operation, {
         globalParameters,
         immutableTypes,
+        discriminatedUnions,
         pathItem,
         version,
       })}\n    }\n`;

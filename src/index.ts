@@ -26,6 +26,7 @@ export default function openapiTS(
   ${transformAll(schema, {
     formatter: options && typeof options.formatter === "function" ? options.formatter : undefined,
     immutableTypes: (options && options.immutableTypes) || false,
+    discriminatedUnions: (options && options.discriminatedUnions) || false,
     rawSchema: options && options.rawSchema,
     version,
   })}

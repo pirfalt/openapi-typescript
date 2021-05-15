@@ -20,6 +20,7 @@ describe("requestBody", () => {
     expect(
       transformOperationObj(schema, {
         immutableTypes: false,
+        discriminatedUnions: false,
         version: 3,
       }).trim()
     ).toBe(`requestBody: {
@@ -32,6 +33,7 @@ describe("requestBody", () => {
     expect(
       transformOperationObj(schema, {
         immutableTypes: true,
+        discriminatedUnions: false,
         version: 3,
       }).trim()
     ).toBe(`readonly requestBody: {
@@ -50,6 +52,7 @@ describe("requestBody", () => {
     expect(
       transformOperationObj(schema, {
         immutableTypes: false,
+        discriminatedUnions: false,
         version: 3,
       }).trim()
     ).toBe(`requestBody: components["requestBodies"]["Request"];`);
@@ -57,6 +60,7 @@ describe("requestBody", () => {
     expect(
       transformOperationObj(schema, {
         immutableTypes: true,
+        discriminatedUnions: false,
         version: 3,
       }).trim()
     ).toBe(`readonly requestBody: components["requestBodies"]["Request"];`);
@@ -85,6 +89,7 @@ describe("requestBodies", () => {
 
     const output = transformRequestBodies(schema, {
       immutableTypes: false,
+      discriminatedUnions: false,
     }).trim();
 
     expect(format(`type requestBodies = {${output}}`)).toBe(
@@ -102,6 +107,7 @@ describe("requestBodies", () => {
 
     const outputImmutable = transformRequestBodies(schema, {
       immutableTypes: true,
+      discriminatedUnions: false,
     }).trim();
 
     expect(format(`type requestBodies = {${outputImmutable}}`)).toBe(
@@ -137,6 +143,7 @@ describe("requestBodies", () => {
 
     const output = transformRequestBodies(schema, {
       immutableTypes: false,
+      discriminatedUnions: false,
     }).trim();
 
     expect(format(`type requestBodies = {${output}}`)).toBe(
@@ -154,6 +161,7 @@ describe("requestBodies", () => {
 
     const outputImmutable = transformRequestBodies(schema, {
       immutableTypes: true,
+      discriminatedUnions: false,
     }).trim();
 
     expect(format(`type requestBodies = {${outputImmutable}}`)).toBe(
@@ -189,6 +197,7 @@ describe("parameters", () => {
         {
           version: 3,
           immutableTypes: false,
+          discriminatedUnions: false,
           pathItem: {},
         }
       ).trim()
@@ -207,6 +216,7 @@ describe("parameters", () => {
         {
           version: 3,
           immutableTypes: false,
+          discriminatedUnions: false,
           pathItem: {
             parameters: [
               {
@@ -252,6 +262,7 @@ describe("parameters", () => {
         {
           version: 3,
           immutableTypes: false,
+          discriminatedUnions: false,
           pathItem: {
             parameters: [
               {
